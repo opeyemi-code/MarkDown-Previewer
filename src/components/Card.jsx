@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import markdownIcon from "../assets/images/markdown.png";
 import ButtonWithText from "./ButtonWithText";
 import {
   faDownload,
