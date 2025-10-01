@@ -3,4 +3,376 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* App container */
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main content area should grow */
+.container {
+  flex: 1;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #e5e7eb;
+  color: #64748b;
+}
+
+h2 {
+  color: #111827;
+}
+
+.header,
+.header__logo-wrapper,
+.nav__list {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header {
+  justify-content: space-between;
+  position: relative;
+  padding: 16px 16px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header__logo {
+  width: 15px;
+  height: 28px;
+}
+
+.header__title {
+  font-size: 18px;
+}
+
+.header__description {
+  display: none;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  padding: 5px 8px;
+}
+
+.hamburger-menu {
+  width: 14px;
+  height: 20px;
+}
+
+.nav {
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+  padding: 12px 0;
+}
+
+.nav-lg-visible {
+  display: none;
+}
+
+.nav__list {
+  list-style: none;
+  gap: 20px;
+  padding-left: 16px;
+  /* justify-content: center; */
+}
+
+.nav__item {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.nav__link {
+  color: #6b7280;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.nav__link--active {
+  color: #2563eb;
+  background-color: #eff6ff;
+  border-radius: 8px;
+}
+
+.main {
+  padding: 48px 16px;
+}
+
+.editor-toolbar {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.editor-toolbar__formatting-tools {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.editor-toolbar__icon {
+  width: 12px;
+  height: auto;
+  color: #4b5563;
+}
+
+.editor-toolbar__action-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 20px;
+}
+
+.editor-toolbar__action-buttons:last-child {
+  margin-right: 0;
+}
+
+.editor-toolbar__action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.editor-toolbar__btn--upload {
+  background-color: #e5e7eb;
+}
+
+.editor-toolbar__btn--save {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.editor-toolbar__btn--download {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.form {
+  margin: 24px 0;
+  background-color: #e2e8f0;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+}
+
+.editor__fieldset {
+  border: none;
+}
+
+.editor__legend,
+.editor__header,
+.editor__text-info {
+  display: flex;
+  align-items: center;
+}
+
+.editor__legend {
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  border-bottom: 1px solid #64748b;
+}
+
+.editor__header {
+  gap: 3px;
+}
+
+.editor__edit-icon,
+.live-preview-icon {
+  color: #111827;
+  width: 14px;
+  height: auto;
+}
+
+.editor__header-title,
+.live-preview__title {
+  font-size: 14px;
+  color: #111827;
+}
+
+.editor__text-info {
+  font-size: 14px;
+  gap: 5px;
+}
+
+.editor__sub-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.editor__textarea {
+  width: 100%;
+  height: auto;
+  padding: 16px;
+  color: #adaebc;
+  border: none;
+}
+
+.live-preview {
+  display: flex;
+  flex-direction: column;
+  background-color: #e2e8f0;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  margin: 24px 0;
+  height: 30vh;
+}
+
+.live-preview__header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #64748b;
+}
+
+.live-preview__body {
+  background-color: #fff;
+  flex: 1;
+  display: flex;
+}
+
+.live-preview__result {
+  padding: 16px;
+  flex: 1;
+  overflow: auto;
+}
+
+.footer {
+  text-align: center;
+  background-color: #fff;
+  padding: 32px 0;
+}
+
+.footer__copyright {
+  margin-bottom: 16px;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #64748b;
+}
+
+.footer__github-icon {
+  margin-right: 5px;
+}
+
+/**** Larg screen (1440px) ****/
+
+@media (min-width: 1440px) {
+  .header {
+    padding: 32px 5vw;
+  }
+  .header__logo {
+    width: 36px;
+    height: auto;
+  }
+
+  .header__title {
+    font-size: 28px;
+  }
+
+  .header__description {
+    display: block;
+    font-size: 20px;
+    color: #6b7280;
+  }
+
+  .header__hamburger-btn {
+    display: none;
+  }
+
+  .nav-lg-visible {
+    display: block;
+    position: static;
+    width: auto;
+    border: none;
+  }
+
+  .nav__item {
+    font-size: 18px;
+  }
+
+  .main {
+    padding: 32px 5vw;
+  }
+
+  .editor-toolbar {
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .editor-toolbar__icon {
+    width: 24px;
+    height: auto;
+  }
+
+  .editor-toolbar__action-buttons {
+    border-left: 1px solid #e5e7eb;
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  .editor-toolbar__action-btn {
+    font-size: 24px;
+  }
+
+  .section__flex {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form,
+  .live-preview {
+    width: 100%;
+  }
+
+  .editor__edit-icon,
+  .live-preview-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .editor__header-title,
+  .live-preview__title {
+    font-size: 18px;
+  }
+
+  .editor__sub-text {
+    font-size: 18px;
+  }
+
+  .live-preview {
+    height: auto;
+  }
+
+  .live-preview__result {
+    height: 100%;
+  }
 }

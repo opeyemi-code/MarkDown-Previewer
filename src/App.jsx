@@ -1,11 +1,26 @@
 import React from "react";
+import "./components/Styles/saved.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import SavedFiles from "./pages/SavedFiles";
+import Header from "./components/Header";
+import About from "./pages/About";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <h1>Hello</h1>
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="saved-files" element={<SavedFiles />} />
+            <Route path="about" element={<About />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+      <Footer />
     </>
   );
 }

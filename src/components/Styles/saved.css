@@ -1,0 +1,145 @@
+.saved-files__wrapper {
+  margin: 24px 0;
+}
+
+.saved-files__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.saved-files__description {
+  font-size: 14px;
+}
+
+.saved-files__actions {
+  display: none;
+}
+
+.saved-files__list {
+  list-style: none;
+}
+
+.saved-files__item,
+.saved-files__item-info,
+.saved-file__action-btns {
+  display: flex;
+}
+
+.saved-files__item {
+  flex-direction: column;
+  background-color: #fff;
+  margin: 16px 0;
+  gap: 5px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.saved-files__item-info {
+  align-items: center;
+  gap: 10px;
+}
+
+.markdown-icon {
+  width: 24px;
+  height: auto;
+  background-color: #eff6ff;
+  /* padding: 10px; */
+}
+
+.file-info__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.file-info__modified {
+  font-size: 14px;
+}
+
+.saved-file__action-btns {
+  gap: 8px;
+}
+
+.saved-file__btn--open {
+  flex: 1;
+  background-color: #2563eb;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.folder-open-icon {
+  margin-right: 8px;
+}
+
+.saved-file__btn-icon {
+  padding: 12px;
+}
+
+.saved-file__btn--danger {
+  color: red;
+}
+
+.saved-files__action-btns {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  .saved-files__hero {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .saved-files__title {
+    font-size: 30px;
+  }
+
+  .saved-files__description {
+    font-size: 16px;
+  }
+
+  .saved-files__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  .search-input__field {
+    padding: 10px 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+  }
+
+  .search-input__icon {
+    position: absolute;
+    z-index: 1;
+    top: 25px;
+    left: 7px;
+  }
+
+  .saved-files__button {
+    padding: 10px 16px;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .add-file__icon {
+    margin-right: 5px;
+  }
+
+  .saved-files__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .saved-files__item {
+    padding: 24px;
+  }
+
+  .saved-file__action-btns {
+    gap: 12px;
+  }
+}
