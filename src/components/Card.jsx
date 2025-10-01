@@ -4,6 +4,7 @@ import markdownIcon from "../assets/images/markdown.png";
 import ButtonWithText from "./ButtonWithText";
 import {
   faDownload,
+  faFileLines,
   faFolderOpen,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +14,7 @@ export default function Card() {
   return (
     <li className="card saved-files__item">
       <div className="saved-files__item-info">
-        <img className="markdown-icon" src={markdownIcon} alt="" />
+        <FontAwesomeIcon icon={faFileLines} className="markdown-icon" />
         <div className="file-info">
           <h2 className="file-info__name">Projects Notes.md</h2>
           <p className="file-info__modified">
