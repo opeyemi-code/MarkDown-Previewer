@@ -9,22 +9,25 @@ import Header from "./components/Header";
 import About from "./pages/About";
 import Footer from "./components/Footer";
 import ErrorPage from "./pages/ErrorPage";
+import { DataProvider } from "./context/DataContext";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="container">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="saved-files" element={<SavedFiles />} />
-            <Route path="about" element={<About />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </div>
+        <DataProvider>
+          <div className="container">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="saved-files" element={<SavedFiles />} />
+              <Route path="about" element={<About />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </DataProvider>
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
