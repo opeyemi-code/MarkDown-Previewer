@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderNav from "./HeaderNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +11,11 @@ export default function Header() {
 
     setIsToggle((prev) => !prev);
   };
+
+  const closeNav = () => {
+    setIsToggle(false);
+  };
+
   return (
     <>
       <header className="header">
@@ -24,7 +29,7 @@ export default function Header() {
         <button className="btn header__hamburger-btn" onClick={toggleNav}>
           <FontAwesomeIcon icon={faBars} className="hamburger-menu" />
         </button>
-        {isToggle && <HeaderNav className="nav" />}
+        {isToggle && <HeaderNav className="nav" onClick={closeNav} />}
         <HeaderNav className="nav nav-lg-visible" />
       </header>
     </>
