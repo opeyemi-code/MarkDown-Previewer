@@ -229,23 +229,27 @@ h2 {
   width: 100%;
   height: auto;
   padding: 16px;
-  color: #adaebc;
+  color: #2d2d2d;
+  background-color: #f9f9f9;
   border: none;
+  caret-color: #000;
 }
 
 .editor__textarea:focus {
   border: none;
   outline: none;
+  overflow-y: auto;
 }
 
 .live-preview {
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
   background-color: #e2e8f0;
   border: 1px solid #64748b;
   border-radius: 4px;
   margin: 24px 0;
-  height: 30vh;
+  height: 40vh;
 }
 
 .live-preview__header {
@@ -258,9 +262,12 @@ h2 {
 
 .live-preview__body {
   background-color: #fff;
+  color: #333 !important;
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 16px 24px;
+  overflow-y: auto;
 }
 
 .live-preview__result {

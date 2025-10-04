@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../components/Card";
 import ButtonWithText from "../components/ButtonWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
+import DataContext from "../context/DataContext";
 
 export default function SavedFiles() {
+  const { storedData } = useContext(DataContext);
+
   return (
     <main className="main">
       <div className="saved-files__hero">
@@ -33,10 +36,15 @@ export default function SavedFiles() {
       </div>
       <div className="saved-files__wrapper">
         <ul className="saved-files__list">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {console.log(storedData)}
+          {storedData.map((file) => (
+            <Card
+              key={file.id}
+              id={file.id}
+              title={file.title}
+              firstCreated={file.firstCreated}
+            />
+          ))}
         </ul>
       </div>
     </main>
