@@ -13,10 +13,6 @@ export default function Header() {
     setIsToggle((prev) => !prev);
   };
 
-  const closeNav = () => {
-    setIsToggle(false);
-  };
-
   return (
     <>
       <header className="header">
