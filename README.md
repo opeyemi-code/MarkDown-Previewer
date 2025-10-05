@@ -99,7 +99,7 @@ bun run preview
 
 ### ✏️ Editor Page
 
-![Editor Screenshot](home.png))
+![Editor Screenshot](./src/assets/screenshots/home.png))
 
 ### 💾 Saved Files Page
 

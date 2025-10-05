@@ -67,11 +67,13 @@ export const DataProvider = ({ children }) => {
   // download markdown
 
   const downloadMarkdown = (content) => {
-    const fileName = content.split("\n")[0];
-    const blob = new Blob([content], {
-      type: "text/plain;charset=utf-8",
-    });
-    FileSaver.saveAs(blob, `${fileName}.md`);
+    if (content.length > 0) {
+      const fileName = content.split("\n")[0];
+      const blob = new Blob([content], {
+        type: "text/plain;charset=utf-8",
+      });
+      FileSaver.saveAs(blob, `${fileName}.md`);
+    }
   };
 
   //Handle success message
