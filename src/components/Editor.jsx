@@ -1,10 +1,10 @@
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import DataContext from "../context/DataContext";
 
 export default function Editor() {
-  const { inputValue, handleInputChange, textareaRef } =
+  const { inputValue, handleInputChange, textareaRef, showSuccess } =
     useContext(DataContext);
 
   // calculate words & lines dynamically
@@ -24,6 +24,11 @@ export default function Editor() {
             />
             <h2 className="editor__header-title">Markdown Editor</h2>
           </div>
+          {/* Success message */}
+          <p className={`success-message ${showSuccess ? "visible" : ""}`}>
+            <FontAwesomeIcon icon={faCheck} className="success-message__icon" />{" "}
+            File saved
+          </p>
           <div className="editor__text-info">
             <h6 className="editor__sub-text editor__line">
               Line:{" "}
@@ -48,11 +53,6 @@ Start typing your markdown here..."
           rows="16"
           autoFocus
         ></textarea>
-
-        {/* Save button connected to handleButton */}
-        {/* <button type="submit" className="editor__save-btn">
-          Save Note
-        </button> */}
       </fieldset>
     </form>
   );

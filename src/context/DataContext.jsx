@@ -6,6 +6,8 @@ const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const [storedData, setStoredData] = useState(() => {
     // Load saved notes from localStorage on first render
     const saved = localStorage.getItem("markdownNotes");
@@ -21,22 +23,17 @@ export const DataProvider = ({ children }) => {
   const [pageTitle, setPageTitle] = useState("Markdown | Home");
   const [isToggle, setIsToggle] = useState(false);
 
-  const handleButton = (e) => {
-    e.preventDefault();
+  const handleButton = () => {
+    const newNote = {
+      id: Date.now(),
+      title: inputValue.split("\n")[0] || "Untitled",
+      content: inputValue.trim(),
+      firstCreated: dateFormat("mediumDate"),
+      lastModified: dateFormat("mediumDate"),
+    };
 
-    if (inputValue.trim().length > 0) {
-      const newNote = {
-        id: Date.now(),
-        title: inputValue.split("\n")[0] || "Untitled",
-        content: inputValue.trim(),
-        firstCreated: dateFormat("mediumDate"),
-        lastModified: dateFormat("mediumDate"),
-      };
-
-      setStoredData((prev) => [...prev, newNote]);
-      setInputValue(""); // clear textarea
-      console.log(storedData);
-    }
+    setStoredData((prev) => [...prev, newNote]);
+    setInputValue(""); // clear textarea
   };
 
   // handleInputChange
@@ -77,6 +74,14 @@ export const DataProvider = ({ children }) => {
     FileSaver.saveAs(blob, `${fileName}.md`);
   };
 
+  //Handle success message
+  const handleSaveSuccess = () => {
+    setShowSuccess(true);
+
+    // Hide message after 2.5s
+    setTimeout(() => setShowSuccess(false), 2500);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -84,6 +89,8 @@ export const DataProvider = ({ children }) => {
         setInputValue,
         storedData,
         setStoredData,
+        showSuccess,
+        setShowSuccess,
         pageTitle,
         setPageTitle,
         isToggle,
@@ -93,6 +100,7 @@ export const DataProvider = ({ children }) => {
         applyFormatting,
         textareaRef,
         downloadMarkdown,
+        handleSaveSuccess,
       }}
     >
       {children}

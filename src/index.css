@@ -280,6 +280,38 @@ h2 {
   overflow: auto;
 }
 
+.success-message {
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  background-color: transparent;
+  color: #16a34a;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  margin: 0 auto;
+  gap: 5px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.success-message.visible {
+  opacity: 1;
+  transform: translate(0);
+  /* left: 30px; */
+  pointer-events: auto;
+}
+
+.success-message__icon {
+  color: #fff;
+  background-color: #16a34a;
+  width: 10px;
+  height: auto;
+  padding: 6px;
+  border-radius: 50%;
+}
+
 .footer {
   text-align: center;
   background-color: #fff;
@@ -383,6 +415,16 @@ h2 {
 
   .editor__sub-text {
     font-size: 18px;
+  }
+
+  .success-message {
+    font-size: 14px;
+  }
+
+  .success-message__icon {
+    width: 12px;
+    height: auto;
+    padding: 8px;
   }
 
   .live-preview {

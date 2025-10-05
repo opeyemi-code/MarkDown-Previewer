@@ -15,7 +15,7 @@ import Button from "./Button";
 import ButtonWithText from "./ButtonWithText";
 import DataContext from "../context/DataContext";
 
-export default function EditorToolbar() {
+export default function EditorToolbar({ onSave }) {
   const { applyFormatting, handleButton, downloadMarkdown, inputValue } =
     useContext(DataContext);
 
@@ -81,7 +81,13 @@ export default function EditorToolbar() {
           className="btn editor-toolbar__buttons editor-toolbar__action-btn editor-toolbar__btn--upload"
         />
         <ButtonWithText
-          onClick={handleButton}
+          onClick={(e) => {
+            e.preventDefault();
+            if (inputValue.trim().length > 0) {
+              handleButton();
+              onSave();
+            }
+          }}
           icon={
             <FontAwesomeIcon
               icon={faFloppyDisk}
