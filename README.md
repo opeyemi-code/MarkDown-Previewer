@@ -99,15 +99,19 @@ bun run preview
 
 ### ✏️ Editor Page
 
-![Editor Screenshot](./screenshots/editor.png)
+![Editor Screenshot](home.png))
 
 ### 💾 Saved Files Page
 
-![Saved Files Screenshot](./screenshots/saved-files.png)
+![Saved Files Screenshot](./src/assets/screenshots/savedFiles.png)
+
+### 💾 About Page
+
+![Saved Files Screenshot](./src/assets/screenshots/About.png)
 
 ### ⚠️ Error Page
 
-![Error Boundary Screenshot](./screenshots/error-page.png)
+![Error Boundary Screenshot](./src/assets/screenshots/errorPage.png)
 
 ---
 
