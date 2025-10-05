@@ -36,7 +36,6 @@ export default function SavedFiles() {
       </div>
       <div className="saved-files__wrapper">
         <ul className="saved-files__list">
-          {console.log(storedData)}
           {storedData.map((file) => (
             <Card
               key={file.id}

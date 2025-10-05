@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import HeaderNav from "./HeaderNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import DataContext from "../context/DataContext";
 
 export default function Header() {
-  const [isToggle, setIsToggle] = useState(false);
+  const { isToggle, setIsToggle } = useContext(DataContext);
 
   const toggleNav = (e) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ export default function Header() {
         <button className="btn header__hamburger-btn" onClick={toggleNav}>
           <FontAwesomeIcon icon={faBars} className="hamburger-menu" />
         </button>
-        {isToggle && <HeaderNav className="nav" onClick={closeNav} />}
+        {isToggle && <HeaderNav className="nav" />}
         <HeaderNav className="nav nav-lg-visible" />
       </header>
     </>

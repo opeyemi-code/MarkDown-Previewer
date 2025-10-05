@@ -18,6 +18,8 @@ export const DataProvider = ({ children }) => {
   }, [storedData]);
 
   const textareaRef = useRef(null); // 👈 keep a ref for the textarea
+  const [pageTitle, setPageTitle] = useState("Markdown | Home");
+  const [isToggle, setIsToggle] = useState(false);
 
   const handleButton = (e) => {
     e.preventDefault();
@@ -82,6 +84,10 @@ export const DataProvider = ({ children }) => {
         setInputValue,
         storedData,
         setStoredData,
+        pageTitle,
+        setPageTitle,
+        isToggle,
+        setIsToggle,
         handleInputChange,
         handleButton,
         applyFormatting,
