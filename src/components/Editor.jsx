@@ -14,30 +14,59 @@ export default function Editor() {
     : 0;
 
   return (
-    <form className="form">
-      <fieldset className="editor__fieldset">
+    <form className="form" aria-label="Markdown editor form" role="form">
+      <fieldset
+        className="editor__fieldset"
+        aria-labelledby="editor-title"
+        role="group"
+      >
         <legend className="editor__legend">
           <div className="editor__header">
             <FontAwesomeIcon
               icon={faPenToSquare}
               className="editor__edit-icon"
+              aria-hidden="true"
             />
-            <h2 className="editor__header-title">Markdown Editor</h2>
+            <h2 id="editor-title" className="editor__header-title">
+              Markdown Editor
+            </h2>
           </div>
+
           {/* Success message */}
-          <p className={`success-message ${showSuccess ? "visible" : ""}`}>
-            <FontAwesomeIcon icon={faCheck} className="success-message__icon" />{" "}
+          <p
+            className={`success-message ${showSuccess ? "visible" : ""}`}
+            aria-live="polite"
+            role="status"
+          >
+            <FontAwesomeIcon
+              icon={faCheck}
+              className="success-message__icon"
+              aria-hidden="true"
+            />{" "}
             File saved
           </p>
-          <div className="editor__text-info">
+
+          <div
+            className="editor__text-info"
+            aria-label={`Document has ${lineCount} lines and ${wordCount} words`}
+          >
             <h6 className="editor__sub-text editor__line">
               Line:{" "}
-              <span className="editor__sub-text editor__line-count">
+              <span
+                className="editor__sub-text editor__line-count"
+                aria-label={`${lineCount} lines`}
+              >
                 {lineCount}
               </span>
             </h6>
             <h6 className="editor__sub-text editor__word">
-              Words: <span className="editor__word-count">{wordCount}</span>
+              Words:{" "}
+              <span
+                className="editor__word-count"
+                aria-label={`${wordCount} words`}
+              >
+                {wordCount}
+              </span>
             </h6>
           </div>
         </legend>
@@ -52,6 +81,8 @@ Start typing your markdown here..."
           cols="30"
           rows="16"
           autoFocus
+          aria-label="Markdown input area"
+          role="textbox"
         ></textarea>
       </fieldset>
     </form>

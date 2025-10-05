@@ -10,21 +10,37 @@ function SavedFiles() {
   const { storedData } = useContext(DataContext);
 
   return (
-    <>
-      <div className="saved-files__hero">
+    <section
+      className="saved-files"
+      aria-labelledby="saved-files-heading"
+      role="region"
+    >
+      <header className="saved-files__hero">
         <div className="saved-files__intro">
-          <h2 className="saved-files__title">Saved Markdown Files</h2>
+          <h2 id="saved-files-heading" className="saved-files__title">
+            Saved Markdown Files
+          </h2>
           <p className="saved-files__description">
             Manage your saved documents
           </p>
         </div>
-        <div className="saved-files__actions">
+
+        <div className="saved-files__actions" role="search">
+          <label htmlFor="search-input" className="visually-hidden">
+            Search saved files
+          </label>
           <div className="search-input">
-            <FontAwesomeIcon icon={faSearch} className="search-input__icon" />
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="search-input__icon"
+              aria-hidden="true"
+            />
             <input
-              type="text"
+              id="search-input"
+              type="search"
               className="search-input__field"
               placeholder="Search here..."
+              aria-label="Search saved markdown files"
             />
           </div>
 
@@ -32,11 +48,13 @@ function SavedFiles() {
             icon={<FontAwesomeIcon icon={faPlus} className="add-file__icon" />}
             text="New file"
             className="btn saved-files__button"
+            aria-label="Create a new markdown file"
           />
         </div>
-      </div>
+      </header>
+
       <div className="saved-files__wrapper">
-        <ul className="saved-files__list">
+        <ul className="saved-files__list" role="list">
           {storedData.map((file) => (
             <Card
               key={file.id}
@@ -47,7 +65,7 @@ function SavedFiles() {
           ))}
         </ul>
       </div>
-    </>
+    </section>
   );
 }
 
@@ -55,7 +73,7 @@ export default function SavedFilesPage() {
   const { storedData } = useContext(DataContext);
 
   return (
-    <main className="main saved-page__main">
+    <main className="main saved-page__main" role="main">
       {storedData.length > 0 ? <SavedFiles /> : <SavedFilesEmptyStates />}
     </main>
   );

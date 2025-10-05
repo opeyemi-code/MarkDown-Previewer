@@ -4,18 +4,26 @@ import React from "react";
 
 export default function About() {
   return (
-    <>
-      <main className="main">
-        <section className="about-section">
-          <FontAwesomeIcon icon={faFileLines} className="file-icon" />
-          <h2 className="about__title">Markdown Editor</h2>
-          <p className="about__description">
-            A simple and elegant markdown editor designed to help you write and
-            format text with ease. Create beautiful documents using markdown
-            syntax in a clean, distraction-free environment.
-          </p>
-        </section>
-      </main>
-    </>
+    <main className="main about-page" role="main">
+      <section
+        className="about-section"
+        aria-labelledby="about-title"
+        aria-describedby="about-description"
+      >
+        <FontAwesomeIcon
+          icon={faFileLines}
+          className="about-section__icon"
+          aria-hidden="true"
+        />
+        <h2 id="about-title" className="about-section__title">
+          Markdown Editor
+        </h2>
+        <p id="about-description" className="about-section__description">
+          A simple and elegant markdown editor designed to help you write and
+          format text with ease. Create beautiful documents using markdown
+          syntax in a clean, distraction-free environment.
+        </p>
+      </section>
+    </main>
   );
 }

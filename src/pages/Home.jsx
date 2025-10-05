@@ -8,8 +8,8 @@ export default function Home() {
   const { handleSaveSuccess } = useContext(DataContext);
 
   return (
-    <main className="main">
-      <EditorToolbar onSave={handleSaveSuccess} /> {/* ✅ Pass function down */}
+    <main className="main" role="main">
+      <EditorToolbar onSave={handleSaveSuccess} /> {/*Pass function down */}
       <section className="section__flex">
         <Editor />
         <LivePreview />

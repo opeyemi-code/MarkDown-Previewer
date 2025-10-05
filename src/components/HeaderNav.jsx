@@ -15,29 +15,43 @@ export default function HeaderNav({ className }) {
     pageTitle.includes(page) ? "nav__link--active" : "";
 
   return (
-    <nav className={className}>
-      <ul className="nav__list">
-        <li className="nav__item">
+    <nav
+      className={className}
+      role="navigation"
+      aria-label="Primary Navigation"
+    >
+      <ul className="nav__list" role="menubar">
+        <li className="nav__item" role="none">
           <Link
             to="/"
+            role="menuitem"
+            aria-current={pageTitle.includes("Home") ? "page" : undefined}
             className={`nav__link ${getActiveClass("Home")}`}
             onClick={() => handleClick("Home")}
           >
             Home
           </Link>
         </li>
-        <li className="nav__item">
+
+        <li className="nav__item" role="none">
           <Link
             to="/saved-files"
+            role="menuitem"
+            aria-current={
+              pageTitle.includes("Saved Files") ? "page" : undefined
+            }
             className={`nav__link ${getActiveClass("Saved Files")}`}
             onClick={() => handleClick("Saved Files")}
           >
             Saved Files
           </Link>
         </li>
-        <li className="nav__item">
+
+        <li className="nav__item" role="none">
           <Link
             to="/about"
+            role="menuitem"
+            aria-current={pageTitle.includes("About") ? "page" : undefined}
             className={`nav__link ${getActiveClass("About")}`}
             onClick={() => handleClick("About")}
           >

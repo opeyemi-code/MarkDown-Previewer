@@ -22,7 +22,6 @@ export default function Card({ id, title, firstCreated }) {
     }
   };
 
-  //delete saved file
   const deleteFile = (e) => {
     e.preventDefault();
     const updatedData = storedData.filter((file) => file.id !== id);
@@ -31,33 +30,61 @@ export default function Card({ id, title, firstCreated }) {
   };
 
   return (
-    <li className="card saved-files__item">
+    <li
+      className="card saved-files__item"
+      role="article"
+      aria-labelledby={`file-title-${id}`}
+    >
       <div className="saved-files__item-info">
-        <FontAwesomeIcon icon={faFileLines} className="markdown-icon" />
+        <FontAwesomeIcon
+          icon={faFileLines}
+          className="markdown-icon"
+          aria-hidden="true"
+        />
         <div className="file-info">
-          <h2 className="file-info__name">{title}</h2>
+          <h3 id={`file-title-${id}`} className="file-info__name">
+            {title}
+          </h3>
           <p className="file-info__modified">
-            First created: <time dateTime="2024-12-15">{firstCreated}</time>
+            First created:{" "}
+            <time
+              dateTime={firstCreated}
+              aria-label={`Created on ${firstCreated}`}
+            >
+              {firstCreated}
+            </time>
           </p>
         </div>
       </div>
-      <div className="saved-file__action-btns">
+
+      <div
+        className="saved-file__action-btns"
+        role="group"
+        aria-label={`Actions for ${title}`}
+      >
         <ButtonWithText
           icon={
-            <FontAwesomeIcon icon={faFolderOpen} className="folder-open-icon" />
+            <FontAwesomeIcon
+              icon={faFolderOpen}
+              className="folder-open-icon"
+              aria-hidden="true"
+            />
           }
           className="btn saved-file__btn-icon saved-file__btn--open"
           text="Open"
+          onClick={() => console.log(`Opening file: ${title}`)} // placeholder
         />
         <Button
           onClick={downloadSavedFile}
-          icon={<FontAwesomeIcon icon={faDownload} />}
+          icon={<FontAwesomeIcon icon={faDownload} aria-hidden="true" />}
           className="btn saved-file__btn-icon saved-file__download-btn"
+          aria-label={`Download ${title}`}
         />
         <Button
           onClick={deleteFile}
-          icon={<FontAwesomeIcon icon={faTrash} />}
+          icon={<FontAwesomeIcon icon={faTrash} aria-hidden="true" />}
           className="btn saved-file__btn-icon saved-file__btn--danger"
+          aria-label={`Delete ${title}`}
         />
       </div>
     </li>
