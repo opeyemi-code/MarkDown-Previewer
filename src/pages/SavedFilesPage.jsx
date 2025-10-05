@@ -4,12 +4,13 @@ import ButtonWithText from "../components/ButtonWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import DataContext from "../context/DataContext";
+import SavedFilesEmptyStates from "../components/SavedFilesEmptyStates";
 
-export default function SavedFiles() {
+function SavedFiles() {
   const { storedData } = useContext(DataContext);
 
   return (
-    <main className="main">
+    <>
       <div className="saved-files__hero">
         <div className="saved-files__intro">
           <h2 className="saved-files__title">Saved Markdown Files</h2>
@@ -46,6 +47,16 @@ export default function SavedFiles() {
           ))}
         </ul>
       </div>
+    </>
+  );
+}
+
+export default function SavedFilesPage() {
+  const { storedData } = useContext(DataContext);
+
+  return (
+    <main className="main saved-page__main">
+      {storedData.length > 0 ? <SavedFiles /> : <SavedFilesEmptyStates />}
     </main>
   );
 }

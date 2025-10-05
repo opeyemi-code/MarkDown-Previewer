@@ -1,5 +1,67 @@
+.saved-page__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-state {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, 50%); */
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 32px;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  margin-top: 30px;
+}
+
+.empty-state__icon {
+  width: 33.75px;
+  height: auto;
+  background-color: #f3f4f6;
+  padding: 24px;
+  border-radius: 50%;
+}
+
+.empty-state__title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.empty-state__text {
+  font-size: 14px;
+  width: 246px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.empty-state__btn {
+  padding: 16px 24px;
+  width: 254px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.empty-state__link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.empty-state__btn-icon {
+  margin-right: 8px;
+}
+
 .saved-files__wrapper {
   margin: 24px 0;
+  width: 100%;
 }
 
 .saved-files__title {
@@ -86,10 +148,33 @@
   display: none;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 768px) {
+  .saved-page__main {
+    align-items: center;
+  }
+  .empty-state {
+    width: 60%;
+  }
+
+  .empty-state__icon {
+    width: 46px;
+    padding: 32px;
+    height: auto;
+  }
+
+  .empty-state__title {
+    font-size: 24px;
+  }
+
+  .empty-state__text {
+    width: 350px;
+    font-size: 16px;
+  }
+
   .saved-files__hero {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   .saved-files__title {
@@ -124,7 +209,7 @@
     padding: 10px 16px;
     background-color: #2563eb;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 8px;
   }
 
@@ -134,7 +219,7 @@
 
   .saved-files__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
@@ -144,5 +229,13 @@
 
   .saved-file__action-btns {
     gap: 12px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .saved-files__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 }
