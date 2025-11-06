@@ -1,7 +1,7 @@
 import React from "react";
-import "./components/Styles/saved.css";
-import "./components/Styles/about.css";
-import "./components/Styles/errorPage.css";
+// import "./components/Styles/saved.css";
+// import "./components/Styles/about.css";
+// import "./components/Styles/errorPage.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SavedFilesPage from "./pages/SavedFilesPage";
@@ -16,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <DataProvider>
-          <div className="container">
+          <div className="flex flex-col flex-1 font-inter h-screen">
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />

@@ -9,26 +9,31 @@ export default function Header() {
 
   const toggleNav = (e) => {
     e.preventDefault();
+    console.log("yes");
     setIsToggle((prev) => !prev);
   };
 
   return (
-    <header className="header">
-      <div className="header__logo-wrapper">
+    <header className="header bg-white flex justify-between items-center px-4 py-4 border-b relative border-[#e5e7eb] lg:px-[5vw]">
+      <div className="header__logo-wrapper flex gap-2">
         <img
           src="/markdown.png"
           alt="MarkdownPro Logo"
-          className="header__logo"
+          className="header__logo w-[15px] h-7 lg:w-9 lg:h-auto"
         />
-        <div className="header__info">
-          <h1 className="header__title">MarkdownPro</h1>
-          <p className="header__description">Professional Editor</p>
+        <div className="header__info flex flex-col justify-center">
+          <h1 className="header__title text-2xl text-slate-900 font-bold">
+            MarkdownPro
+          </h1>
+          <p className="header__description text-[12px] hidden lg:block lg:text-sm text-gray-400">
+            Professional Editor
+          </p>
         </div>
       </div>
 
       {/* Accessible Hamburger Button */}
       <button
-        className="btn header__hamburger-btn"
+        className="btn header__hamburger-btn lg:hidden bg-[#E5E7EB] p-1.5 cursor-pointer"
         onClick={toggleNav}
         aria-label={isToggle ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isToggle}
@@ -38,14 +43,16 @@ export default function Header() {
       </button>
 
       {/* Responsive Navigation */}
-      <nav
+      {/* <nav
         id="main-navigation"
         role="navigation"
         aria-label="Primary"
-        className={isToggle ? "nav" : "nav nav-lg-visible"}
+        // className={isToggle ? "nav" : "nav nav-lg-visible"}
+        className="hidden lg:block"
       >
         <HeaderNav />
-      </nav>
+      </nav> */}
+      <HeaderNav />
     </header>
   );
 }

@@ -21,13 +21,13 @@ export default function EditorToolbar({ onSave }) {
 
   return (
     <section
-      className="editor-toolbar"
+      className="editor-toolbar bg-white p-6 rounded-lg flex flex-col gap-4"
       role="toolbar"
       aria-label="Markdown editing toolbar"
     >
       {/* --- Formatting Tools --- */}
       <div
-        className="editor-toolbar__formatting-tools"
+        className="editor-toolbar__formatting-tools flex gap-4"
         role="group"
         aria-label="Text formatting tools"
       >
@@ -36,7 +36,10 @@ export default function EditorToolbar({ onSave }) {
           className="btn editor-toolbar__button editor-toolbar__buttons--bold"
           ariaLabel="Bold text"
           icon={
-            <FontAwesomeIcon icon={faBold} className="editor-toolbar__icon" />
+            <FontAwesomeIcon
+              icon={faBold}
+              className="editor-toolbar__icon text-slate-600"
+            />
           }
         />
 
@@ -48,7 +51,10 @@ export default function EditorToolbar({ onSave }) {
           className="btn editor-toolbar__button editor-toolbar__buttons--italic"
           ariaLabel="Italicize text"
           icon={
-            <FontAwesomeIcon icon={faItalic} className="editor-toolbar__icon" />
+            <FontAwesomeIcon
+              icon={faItalic}
+              className="editor-toolbar__icon text-slate-600"
+            />
           }
         />
 
@@ -59,7 +65,7 @@ export default function EditorToolbar({ onSave }) {
           icon={
             <FontAwesomeIcon
               icon={faHeading}
-              className="editor-toolbar__icon"
+              className="editor-toolbar__icon text-slate-600"
             />
           }
         />
@@ -69,7 +75,10 @@ export default function EditorToolbar({ onSave }) {
           className="btn editor-toolbar__button editor-toolbar__buttons--list"
           ariaLabel="Insert list item"
           icon={
-            <FontAwesomeIcon icon={faList} className="editor-toolbar__icon" />
+            <FontAwesomeIcon
+              icon={faList}
+              className="editor-toolbar__icon text-slate-600"
+            />
           }
         />
 
@@ -78,7 +87,10 @@ export default function EditorToolbar({ onSave }) {
           className="btn editor-toolbar__button editor-toolbar__buttons--link"
           ariaLabel="Add hyperlink"
           icon={
-            <FontAwesomeIcon icon={faLink} className="editor-toolbar__icon" />
+            <FontAwesomeIcon
+              icon={faLink}
+              className="editor-toolbar__icon text-slate-600"
+            />
           }
         />
 
@@ -87,14 +99,17 @@ export default function EditorToolbar({ onSave }) {
           className="btn editor-toolbar__button editor-toolbar__buttons--code"
           ariaLabel="Insert code snippet"
           icon={
-            <FontAwesomeIcon icon={faCode} className="editor-toolbar__icon" />
+            <FontAwesomeIcon
+              icon={faCode}
+              className="editor-toolbar__icon text-slate-600"
+            />
           }
         />
       </div>
 
       {/* --- Action Buttons --- */}
       <div
-        className="editor-toolbar__action-buttons"
+        className="editor-toolbar__action-buttons flex gap-3"
         role="group"
         aria-label="File actions"
       >
@@ -104,7 +119,7 @@ export default function EditorToolbar({ onSave }) {
           }
           text="Upload"
           ariaLabel="Upload markdown file"
-          className="btn editor-toolbar__buttons editor-toolbar__action-btn editor-toolbar__btn--upload"
+          className="btn editor-toolbar__buttons editor-toolbar__action-btn editor-toolbar__btn--upload text-slate-600"
         />
 
         <ButtonWithText
@@ -123,7 +138,7 @@ export default function EditorToolbar({ onSave }) {
           }
           text="Save"
           ariaLabel="Save markdown file"
-          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--save"
+          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--save bg-green-600 text-slate-50 p-2.5 rounded-md"
         />
 
         <ButtonWithText
@@ -139,7 +154,7 @@ export default function EditorToolbar({ onSave }) {
           }
           text="Download"
           ariaLabel="Download markdown file"
-          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--download"
+          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--download bg-blue-600 text-slate-50 p-2.5 rounded-md"
         />
       </div>
     </section>

@@ -14,14 +14,18 @@ export default function Editor() {
     : 0;
 
   return (
-    <form className="form" aria-label="Markdown editor form" role="form">
+    <form
+      className="form bg-[#e2e8f0] my-6 border border-slate-500 rounded-lg flex flex-col lg:w-1/2 lg:my-0"
+      aria-label="Markdown editor form"
+      role="form"
+    >
       <fieldset
         className="editor__fieldset"
         aria-labelledby="editor-title"
         role="group"
       >
-        <legend className="editor__legend">
-          <div className="editor__header">
+        <legend className="editor__legend border-b border-slate-500 flex justify-between w-full p-4">
+          <div className="editor__header flex items-center gap-2  ">
             <FontAwesomeIcon
               icon={faPenToSquare}
               className="editor__edit-icon"
@@ -34,7 +38,7 @@ export default function Editor() {
 
           {/* Success message */}
           <p
-            className={`success-message ${showSuccess ? "visible" : ""}`}
+            className={`success-message ${showSuccess ? "visible" : ""} hidden`}
             aria-live="polite"
             role="status"
           >
@@ -47,10 +51,10 @@ export default function Editor() {
           </p>
 
           <div
-            className="editor__text-info"
+            className="editor__text-info flex gap-4 text-slate-500"
             aria-label={`Document has ${lineCount} lines and ${wordCount} words`}
           >
-            <h6 className="editor__sub-text editor__line">
+            <h6 className="editor__sub-text editor__line ">
               Line:{" "}
               <span
                 className="editor__sub-text editor__line-count"
@@ -74,7 +78,7 @@ export default function Editor() {
         <textarea
           ref={textareaRef}
           onChange={handleInputChange}
-          className="editor__textarea"
+          className="editor__textarea bg-white text-sm w-full p-4 outline-0 caret-black text-neutral-800 flex-1"
           value={inputValue}
           placeholder="# Welcome to MarkdownPro 
 Start typing your markdown here..."

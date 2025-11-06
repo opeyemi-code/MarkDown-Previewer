@@ -9,12 +9,12 @@ export default function LivePreview() {
 
   return (
     <article
-      className="live-preview"
+      className="live-preview bg-[#e2e8f0] border border-slate-500 rounded-lg lg:w-1/2 flex flex-col"
       aria-labelledby="live-preview-title"
       role="region"
     >
       {/* Header for the preview section */}
-      <header className="live-preview__header">
+      <header className="live-preview__header border-b border-slate-500 flex items-center gap-2 p-4">
         <FontAwesomeIcon
           icon={faEye}
           className="live-preview__icon"
@@ -27,7 +27,7 @@ export default function LivePreview() {
 
       {/* Markdown render area */}
       <section
-        className="live-preview__body"
+        className="live-preview__body h-[290px] bg-white p-4 rounded-r-lg rounded-l-lg lg:flex-1"
         aria-live="polite"
         aria-label="Rendered Markdown Preview"
       >

@@ -5,7 +5,7 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className="footer">
+      <footer className="footer bg-white p-8 flex flex-col items-center gap-3 text-slate-500 text-sm">
         <p className="footer__copyright">
           © 2024 MarkdownPro. All rights reserved.
         </p>
@@ -15,7 +15,10 @@ export default function Footer() {
             href="github.com/opeyemi-code"
             target="_blank"
           >
-            <FontAwesomeIcon icon={faGithub} className="footer__github-icon" />
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="footer__github-icon mr-1"
+            />
             GitHub
           </a>
         </p>
