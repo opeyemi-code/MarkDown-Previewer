@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import DataContext from "../context/DataContext";
 
-export default function HeaderNav({ className }) {
+export default function HeaderNav() {
   const { pageTitle, setPageTitle, isToggle, setIsToggle } =
     useContext(DataContext);
 

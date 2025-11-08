@@ -12,8 +12,9 @@ export default function Footer() {
         <p className="footer__link-item">
           <a
             className="footer__link"
-            href="github.com/opeyemi-code"
+            href="https://www.github.com/opeyemi-code/MarkDown-Previewer"
             target="_blank"
+            rel="noopener"
           >
             <FontAwesomeIcon
               icon={faGithub}
