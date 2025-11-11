@@ -5,13 +5,11 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className="footer bg-white p-8 flex flex-col items-center gap-3 text-slate-500 text-sm">
-        <p className="footer__copyright">
-          © 2024 MarkdownPro. All rights reserved.
-        </p>
+      <footer className="footer bg-white p-8 flex flex-col items-center gap-3 text-slate-500 text-sm lg:text-lg">
+        <p className="">© 2024 MarkdownPro. All rights reserved.</p>
         <p className="footer__link-item">
           <a
-            className="footer__link"
+            className=""
             href="https://www.github.com/opeyemi-code/MarkDown-Previewer"
             target="_blank"
             rel="noopener"

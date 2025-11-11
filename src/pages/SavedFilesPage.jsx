@@ -10,35 +10,36 @@ function SavedFiles() {
   const { storedData } = useContext(DataContext);
 
   return (
-    <section
-      className="saved-files"
+    <main
+      className="px-4 pt-14 w-full"
       aria-labelledby="saved-files-heading"
       role="region"
     >
-      <header className="saved-files__hero">
-        <div className="saved-files__intro">
-          <h2 id="saved-files-heading" className="saved-files__title">
+      <header className="flex justify-between items-center">
+        <div>
+          <h2
+            id="saved-files-heading"
+            className="text-slate-900 font-semibold text-xl mb-1"
+          >
             Saved Markdown Files
           </h2>
-          <p className="saved-files__description">
-            Manage your saved documents
-          </p>
+          <p className="text-gray-500">Manage your saved documents</p>
         </div>
 
-        <div className="saved-files__actions" role="search">
-          <label htmlFor="search-input" className="visually-hidden">
+        <div className="hidden lg:flex gap-3" role="search">
+          <label htmlFor="search-input" className="hidden">
             Search saved files
           </label>
-          <div className="search-input">
+          <div className="">
             <FontAwesomeIcon
               icon={faSearch}
-              className="search-input__icon"
+              className="relative z-10 top-0 left-7"
               aria-hidden="true"
             />
             <input
               id="search-input"
               type="search"
-              className="search-input__field"
+              className="search-input__field bg-white rounded-lg outline-0 py-2 px-8 caret-slate-500"
               placeholder="Search here..."
               aria-label="Search saved markdown files"
             />
@@ -47,14 +48,17 @@ function SavedFiles() {
           <ButtonWithText
             icon={<FontAwesomeIcon icon={faPlus} className="add-file__icon" />}
             text="New file"
-            className="btn saved-files__button"
+            className="bg-blue-600 text-slate-100 py-2 px-4 rounded-lg"
             aria-label="Create a new markdown file"
           />
         </div>
       </header>
 
-      <div className="saved-files__wrapper">
-        <ul className="saved-files__list" role="list">
+      <div className="my-8">
+        <ul
+          className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-4"
+          role="list"
+        >
           {storedData.map((file) => (
             <Card
               key={file.id}
@@ -65,7 +69,7 @@ function SavedFiles() {
           ))}
         </ul>
       </div>
-    </section>
+    </main>
   );
 }
 
@@ -73,7 +77,10 @@ export default function SavedFilesPage() {
   const { storedData } = useContext(DataContext);
 
   return (
-    <main className="main saved-page__main" role="main">
+    <main
+      className="px-4 py-12 flex flex-col items-center justify-center  lg:px-[5vw] lg:py-15"
+      role="main"
+    >
       {storedData.length > 0 ? <SavedFiles /> : <SavedFilesEmptyStates />}
     </main>
   );
