@@ -5,23 +5,37 @@ import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
   return (
-    <main className="main" role="main" aria-labelledby="error-title">
-      <section className="error-page" role="alert" aria-live="assertive">
+    <main
+      className="px-4 lg:px-[5vw] flex justify-center items-center"
+      role="main"
+      aria-labelledby="error-title"
+    >
+      <section
+        className="bg-white px-4 py-12 rounded-lg flex flex-col items-center gap-3 text-center shadow  md:w-87.5 lg:w-100 lg:px-8"
+        role="alert"
+        aria-live="assertive"
+      >
         <FontAwesomeIcon
           icon={faCircleExclamation}
-          className="error-page__icon"
+          className="text-4xl text-slate-300 bg-slate-100 px-6 py-7 rounded-full"
           aria-hidden="true"
         />
-        <h2 id="error-title" className="error-page__title">
+        <h2
+          id="error-title"
+          className="text-2xl text-slate-900 font-semibold lg:text-3xl"
+        >
           Page Not Found
         </h2>
-        <p className="error-page__description" aria-label="Error description">
+        <p
+          className="text-[1rem] text-slate-500 mx-4 lg:text-lg"
+          aria-label="Error description"
+        >
           The page you're looking for doesn't exist or has been moved.
         </p>
 
         <Link
           to="/"
-          className="btn error-page__btn error-page__link"
+          className="bg-blue-600 text-slate-50 text-[1rem] p-3 w-full rounded-lg lg:text-lg"
           role="button"
           aria-label="Go back to the home page"
         >

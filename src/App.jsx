@@ -16,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <DataProvider>
-          <div className="wrapper flex flex-col justify-between font-inter border">
+          <div className="wrapper flex flex-col justify-between font-inter">
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
