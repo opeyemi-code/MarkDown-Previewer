@@ -21,26 +21,21 @@ export default function EditorToolbar({ onSave }) {
 
   return (
     <section
-      className="editor-toolbar bg-white p-6 rounded-lg flex flex-col gap-4 lg:flex-row lg:items-center"
+      className=" bg-white p-6 rounded-lg flex flex-col gap-4 md:flex-row lg:items-center"
       role="toolbar"
       aria-label="Markdown editing toolbar"
     >
       {/* --- Formatting Tools --- */}
       <div
-        className="editor-toolbar__formatting-tools flex gap-2"
+        className="flex gap-2"
         role="group"
         aria-label="Text formatting tools"
       >
         <Button
           onClick={() => applyFormatting("**", "**")}
-          className="btn editor-toolbar__button editor-toolbar__buttons--bold p-1.5 bg-gray-200 rounded-md"
+          className="p-1.5 bg-gray-200 hover:bg-gray-300 rounded-md cursor-pointer"
           ariaLabel="Bold text"
-          icon={
-            <FontAwesomeIcon
-              icon={faBold}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faBold} className="text-slate-600" />}
         />
 
         <Button
@@ -48,78 +43,49 @@ export default function EditorToolbar({ onSave }) {
             e.preventDefault();
             applyFormatting("_", "_");
           }}
-          className="btn editor-toolbar__button editor-toolbar__buttons--italic p-1.5 bg-gray-200 rounded-md"
+          className=" p-1.5 bg-gray-200 hover:bg-gray-300 rounded-md cursor-pointer"
           ariaLabel="Italicize text"
-          icon={
-            <FontAwesomeIcon
-              icon={faItalic}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faItalic} className="text-slate-600" />}
         />
 
         <Button
           onClick={() => applyFormatting("# ", "")}
-          className="btn editor-toolbar__button editor-toolbar__button--heading p-1.5 bg-gray-200 rounded-md"
+          className="p-1.5 bg-gray-200 hover:bg-gray-300 rounded-md cursor-pointer"
           ariaLabel="Add heading"
-          icon={
-            <FontAwesomeIcon
-              icon={faHeading}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faHeading} className="text-slate-600" />}
         />
 
         <Button
           onClick={() => applyFormatting("- ", "")}
-          className="btn editor-toolbar__button editor-toolbar__buttons--list p-1.5 bg-gray-200 rounded-md"
+          className=" bg-gray-200 hover:bg-gray-300 p-1.5 rounded-md cursor-pointer"
           ariaLabel="Insert list item"
-          icon={
-            <FontAwesomeIcon
-              icon={faList}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faList} className="text-slate-600" />}
         />
 
         <Button
           onClick={() => applyFormatting("[", "](url)")}
-          className="btn editor-toolbar__button editor-toolbar__buttons--link p-1.5 bg-gray-200 rounded-md"
+          className="p-1.5 bg-gray-200 hover:bg-gray-300 rounded-md cursor-pointer"
           ariaLabel="Add hyperlink"
-          icon={
-            <FontAwesomeIcon
-              icon={faLink}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faLink} className="text-slate-600" />}
         />
 
         <Button
           onClick={() => applyFormatting("`", "`")}
-          className="btn editor-toolbar__button editor-toolbar__buttons--code p-1.5 bg-gray-200 rounded-md"
+          className=" p-1.5 bg-gray-200 hover:bg-gray-300 rounded-md cursor-pointer"
           ariaLabel="Insert code snippet"
-          icon={
-            <FontAwesomeIcon
-              icon={faCode}
-              className="editor-toolbar__icon text-slate-600"
-            />
-          }
+          icon={<FontAwesomeIcon icon={faCode} className="text-slate-600" />}
         />
       </div>
       <div className="w-px h-6 bg-gray-200 hidden lg:block"></div>
       {/* --- Action Buttons --- */}
-      <div
-        className="editor-toolbar__action-buttons flex gap-3"
-        role="group"
-        aria-label="File actions"
-      >
+      <div className="flex gap-3" role="group" aria-label="File actions">
         <ButtonWithText
           icon={
             <FontAwesomeIcon icon={faUpload} className="editor-toolbar__icon" />
           }
           text="Upload"
           ariaLabel="Upload markdown file"
-          className="btn editor-toolbar__buttons editor-toolbar__action-btn editor-toolbar__btn--upload text-slate-600 p-2"
+          className=" text-slate-600 hover:bg-slate-200 p-2 rounded-lg cursor-pointer"
         />
 
         <ButtonWithText
@@ -138,7 +104,7 @@ export default function EditorToolbar({ onSave }) {
           }
           text="Save"
           ariaLabel="Save markdown file"
-          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--save bg-green-600 text-slate-50 p-2 rounded-md"
+          className=" bg-green-600 hover:bg-green-700 text-slate-50 p-2 rounded-md cursor-pointer"
         />
 
         <ButtonWithText
@@ -149,12 +115,12 @@ export default function EditorToolbar({ onSave }) {
           icon={
             <FontAwesomeIcon
               icon={faDownload}
-              className="editor-toolbar__icon"
+              className="editor-toolbar__icon hidden! md:inline-block!"
             />
           }
           text="Download"
           ariaLabel="Download markdown file"
-          className="btn editor-toolbar__button editor-toolbar__action-btn editor-toolbar__btn--download bg-blue-600 text-slate-50 p-2 rounded-md"
+          className="bg-blue-600 hover:bg-blue-700 text-slate-50 p-2 rounded-md cursor-pointer"
         />
       </div>
     </section>

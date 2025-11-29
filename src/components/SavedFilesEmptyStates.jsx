@@ -29,7 +29,7 @@ export default function SavedFilesEmptyState() {
 
       <Link
         to="/"
-        className="bg-blue-600 text-slate-100 py-3 px-5 text-[1rem] rounded-3xl text-center w-[254px]"
+        className="bg-blue-600 hover:bg-blue-700 text-slate-100 py-3 px-5 text-[1rem] rounded-3xl text-center w-[254px]"
         aria-label="Create a new markdown file"
       >
         <FontAwesomeIcon icon={faPlus} className="mr-2" aria-hidden="true" />
