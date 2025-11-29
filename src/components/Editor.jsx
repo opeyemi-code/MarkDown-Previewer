@@ -20,7 +20,7 @@ export default function Editor() {
       role="form"
     >
       <fieldset
-        className="editor__fieldset"
+        className="editor__fieldset h-full"
         aria-labelledby="editor-title"
         role="group"
       >
@@ -78,7 +78,7 @@ export default function Editor() {
         <textarea
           ref={textareaRef}
           onChange={handleInputChange}
-          className="editor__textarea bg-white text-sm w-full p-4 outline-0 caret-black text-neutral-800 flex-1"
+          className="editor__textarea bg-white text-sm w-full h-full p-4 outline-0 caret-black text-neutral-800 flex-1 rounded-b-lg"
           value={inputValue}
           placeholder="# Welcome to MarkdownPro 
 Start typing your markdown here..."
