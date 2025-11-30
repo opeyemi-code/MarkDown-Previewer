@@ -14,24 +14,22 @@ export default function LivePreview() {
 
   return (
     <article
-      className="live-preview bg-[#e2e8f0] border border-slate-500 rounded-lg h-[500px] lg:w-1/2 flex flex-col"
+      className="bg-[#e2e8f0] border border-slate-500 rounded-lg h-[500px] lg:w-1/2 flex flex-col"
       aria-labelledby="live-preview-title"
       role="region"
     >
       {/* Header for the preview section */}
-      <header className="live-preview__header border-b border-slate-500 flex items-center gap-2 p-4">
+      <header className="border-b border-slate-500 flex items-center gap-2 p-4">
         <FontAwesomeIcon
           icon={faEye}
           className="live-preview__icon"
           aria-hidden="true"
         />
-        <h2 id="live-preview-title" className="live-preview__title">
-          Live Preview
-        </h2>
+        <h2>Live Preview</h2>
       </header>
       {/* Markdown render area */}
       <section
-        className="live-preview__body prose max-w-none overflow-y-scroll bg-white p-4 rounded-b-lg lg:flex-1"
+        className="prose max-w-none overflow-y-scroll h-full bg-white p-4 rounded-b-lg lg:flex-1"
         aria-live="polite"
         aria-label="Rendered Markdown Preview"
       >
@@ -60,9 +58,7 @@ export default function LivePreview() {
             }}
           />
         ) : (
-          <p className="live-preview__result">
-            Start typing to see your markdown rendered live.
-          </p>
+          <p>Start typing to see your markdown rendered live.</p>
         )}
       </section>
     </article>

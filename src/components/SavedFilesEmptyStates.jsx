@@ -33,7 +33,7 @@ export default function SavedFilesEmptyState() {
         aria-label="Create a new markdown file"
       >
         <FontAwesomeIcon icon={faPlus} className="mr-2" aria-hidden="true" />
-        <span className="empty-state__btn-text">Create New File</span>
+        <span>Create New File</span>
       </Link>
     </section>
   );

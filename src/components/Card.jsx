@@ -41,7 +41,7 @@ export default function Card({ id, title, firstCreated }) {
           className="w-4 h-auto text-blue-600 p-3.5 bg-blue-50 rounded-lg"
           aria-hidden="true"
         />
-        <div className="">
+        <div>
           <h3
             id={`file-title-${id}`}
             className="text-slate-900 font-medium text-[16px]"

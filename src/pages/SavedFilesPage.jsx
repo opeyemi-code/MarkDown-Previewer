@@ -45,13 +45,6 @@ function SavedFiles() {
               aria-label="Search saved markdown files"
             />
           </div>
-
-          {/* <ButtonWithText
-            icon={<FontAwesomeIcon icon={faPlus} className="add-file__icon" />}
-            text="New file"
-            className="bg-blue-600 text-slate-100 py-2 px-4 rounded-lg"
-            aria-label="Create a new markdown file"
-          /> */}
           <button
             className="bg-blue-600 text-slate-100 px-5 py-2 rounded-lg cursor-pointer hover:bg-blue-700"
             type="button"
