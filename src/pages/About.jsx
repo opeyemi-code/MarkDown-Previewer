@@ -15,13 +15,10 @@ export default function About() {
           className="text-3xl text-slate-100 bg-blue-600 p-5 rounded-2xl"
           aria-hidden="true"
         />
-        <h2 id="about-title" className="text-slate-900 text-2xl font-semibold">
+        <h2 className="text-slate-900 text-2xl font-semibold">
           Markdown Editor
         </h2>
-        <p
-          id="about-description"
-          className="text-[1rem] text-slate-500 lg:w-87.5 leading-6.5 lg:text-lg"
-        >
+        <p className="text-[1rem] text-slate-500 lg:w-87.5 leading-6.5 lg:text-lg">
           A simple and elegant markdown editor designed to help you write and
           format text with ease. Create beautiful documents using markdown
           syntax in a clean, distraction-free environment.

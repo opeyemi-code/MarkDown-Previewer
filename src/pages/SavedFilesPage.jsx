@@ -31,7 +31,7 @@ function SavedFiles() {
           <label htmlFor="search-input" className="hidden">
             Search saved files
           </label>
-          <div className="">
+          <div>
             <FontAwesomeIcon
               icon={faSearch}
               className="relative z-10 top-0 left-2 -mr-5"

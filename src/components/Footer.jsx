@@ -13,10 +13,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener"
           >
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="footer__github-icon mr-1"
-            />
+            <FontAwesomeIcon icon={faGithub} className="mr-1" />
             GitHub
           </a>
         </p>

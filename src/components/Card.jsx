@@ -66,14 +66,8 @@ export default function Card({ id, title, firstCreated }) {
         aria-label={`Actions for ${title}`}
       >
         <ButtonWithText
-          icon={
-            <FontAwesomeIcon
-              icon={faFolderOpen}
-              className="folder-open-icon"
-              aria-hidden="true"
-            />
-          }
-          className="btn saved-file__btn-icon saved-file__btn--open bg-blue-600 hover:bg-blue-700 cursor-pointer text-slate-100 flex-1 p-2 rounded-lg"
+          icon={<FontAwesomeIcon icon={faFolderOpen} aria-hidden="true" />}
+          className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-slate-100 flex-1 p-2 rounded-lg"
           text="Open"
           onClick={() => console.log(`Opening file: ${title}`)} // placeholder
         />

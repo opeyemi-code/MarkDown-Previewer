@@ -20,11 +20,7 @@ export default function LivePreview() {
     >
       {/* Header for the preview section */}
       <header className="border-b border-slate-500 flex items-center gap-2 p-4">
-        <FontAwesomeIcon
-          icon={faEye}
-          className="live-preview__icon"
-          aria-hidden="true"
-        />
+        <FontAwesomeIcon icon={faEye} aria-hidden="true" />
         <h2>Live Preview</h2>
       </header>
       {/* Markdown render area */}
@@ -39,7 +35,7 @@ export default function LivePreview() {
             children={inputValue}
             components={{
               code(props) {
-                const { children, className, node, ...rest } = props;
+                const { children, className, ...rest } = props;
                 const match = /language-(\w+)/.exec(className || "");
                 return match ? (
                   <SyntaxHighlighter
@@ -58,7 +54,9 @@ export default function LivePreview() {
             }}
           />
         ) : (
-          <p>Start typing to see your markdown rendered live.</p>
+          <p className="live-preview__result">
+            Start typing to see your markdown rendered live.
+          </p>
         )}
       </section>
     </article>

@@ -15,22 +15,14 @@ export default function Editor() {
 
   return (
     <form
-      className="form bg-[#e2e8f0] my-6 border border-slate-500 rounded-lg flex flex-col lg:w-1/2 lg:my-0"
+      className="bg-[#e2e8f0] my-6 border border-slate-500 rounded-lg flex flex-col lg:w-1/2 lg:my-0"
       aria-label="Markdown editor form"
       role="form"
     >
-      <fieldset
-        className="editor__fieldset h-full"
-        aria-labelledby="editor-title"
-        role="group"
-      >
-        <legend className="editor__legend border-b border-slate-500 flex justify-between w-full p-4">
+      <fieldset className="h-full" aria-labelledby="editor-title" role="group">
+        <legend className="border-b border-slate-500 flex justify-between w-full p-4">
           <div className="editor__header flex items-center gap-2  ">
-            <FontAwesomeIcon
-              icon={faPenToSquare}
-              className="editor__edit-icon"
-              aria-hidden="true"
-            />
+            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" />
             <h2 id="editor-title" className="editor__header-title">
               Markdown Editor
             </h2>
@@ -51,17 +43,11 @@ export default function Editor() {
           </p>
 
           <div
-            className="editor__text-info flex gap-4 text-slate-500"
+            className="flex gap-4 text-slate-500"
             aria-label={`Document has ${lineCount} lines and ${wordCount} words`}
           >
-            <h6 className="editor__sub-text editor__line ">
-              Line:{" "}
-              <span
-                className="editor__sub-text editor__line-count"
-                aria-label={`${lineCount} lines`}
-              >
-                {lineCount}
-              </span>
+            <h6>
+              Line: <span aria-label={`${lineCount} lines`}>{lineCount}</span>
             </h6>
             <h6 className="editor__sub-text editor__word">
               Words:{" "}

@@ -20,10 +20,7 @@ export default function ErrorPage() {
           className="text-4xl text-slate-300 bg-slate-100 px-6 py-7 rounded-full"
           aria-hidden="true"
         />
-        <h2
-          id="error-title"
-          className="text-2xl text-slate-900 font-semibold lg:text-3xl"
-        >
+        <h2 className="text-2xl text-slate-900 font-semibold lg:text-3xl">
           Page Not Found
         </h2>
         <p
