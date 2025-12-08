@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, type JSX } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBold,
@@ -11,11 +11,16 @@ import {
   faList,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "./Button";
-import ButtonWithText from "./ButtonWithText";
-import DataContext from "../context/DataContext";
+import Button from "./Button.js";
+import ButtonWithText from "./ButtonWithText.js";
+import DataContext from "../context/DataContext.js";
+import type { DataContextType } from "./types/models.js";
 
-export default function EditorToolbar({ onSave }) {
+export default function EditorToolbar({
+  onSave,
+}: {
+  onSave: () => void;
+}): JSX.Element {
   const { applyFormatting, handleButton, downloadMarkdown, inputValue } =
     useContext(DataContext);
 
@@ -39,7 +44,7 @@ export default function EditorToolbar({ onSave }) {
         />
 
         <Button
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             applyFormatting("_", "_");
           }}
@@ -89,7 +94,7 @@ export default function EditorToolbar({ onSave }) {
         />
 
         <ButtonWithText
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             if (inputValue.trim().length > 0) {
               handleButton();
@@ -108,7 +113,7 @@ export default function EditorToolbar({ onSave }) {
         />
 
         <ButtonWithText
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             downloadMarkdown(inputValue);
           }}

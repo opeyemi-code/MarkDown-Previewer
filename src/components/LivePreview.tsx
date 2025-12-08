@@ -1,7 +1,7 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
-import DataContext from "../context/DataContext";
+import DataContext from "../context/DataContext.js";
 // import ReactMarkdown from "react-markdown";
 
 import Markdown from "react-markdown";

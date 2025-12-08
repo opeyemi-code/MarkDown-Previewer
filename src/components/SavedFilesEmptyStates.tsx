@@ -1,9 +1,9 @@
 import { faFolderOpen, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { type JSX } from "react";
 import { Link } from "react-router-dom";
 
-export default function SavedFilesEmptyState() {
+export default function SavedFilesEmptyState(): JSX.Element {
   return (
     <section
       className="py-10 w-full bg-white rounded-2xl flex-1 flex flex-col items-center justify-center gap-4 md:w-[70%] lg:w-[50%] lg:py-18"

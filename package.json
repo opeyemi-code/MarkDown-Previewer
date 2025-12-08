@@ -17,6 +17,8 @@
     "@fortawesome/react-fontawesome": "^3.0.2",
     "@monaco-editor/react": "^4.7.0-rc.0",
     "@tailwindcss/vite": "^4.1.16",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.10.1",
     "dateformat": "^5.0.3",
     "file-saver": "^2.0.5",
     "react": "^19.1.1",
@@ -25,13 +27,14 @@
     "react-router-dom": "^7.9.3",
     "react-syntax-highlighter": "^15.6.6",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",

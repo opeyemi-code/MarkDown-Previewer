@@ -1,8 +1,8 @@
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { type JSX } from "react";
 
-export default function About() {
+export default function About(): JSX.Element {
   return (
     <main className="px-4 lg:px-[5vw] flex justify-center" role="main">
       <section
