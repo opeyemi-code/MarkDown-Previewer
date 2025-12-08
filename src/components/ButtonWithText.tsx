@@ -1,6 +1,12 @@
-import React from "react";
+import React, { type MouseEventHandler } from "react";
+import type { ButtonWithTextProps } from "./types/models.js";
 
-export default function ButtonWithText({ icon, text, className, onClick }) {
+export default function ButtonWithText({
+  icon,
+  text,
+  className,
+  onClick,
+}: ButtonWithTextProps) {
   return (
     <button
       className={className}

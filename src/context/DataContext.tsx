@@ -2,13 +2,20 @@ import { createContext, useState, useEffect, useRef } from "react";
 import FileSaver from "file-saver";
 import dateFormat from "dateformat";
 
-const DataContext = createContext({});
+import type {
+  Note,
+  DataContextType,
+  ProviderProps,
+} from "../components/types/models.js";
 
-export const DataProvider = ({ children }) => {
-  const [inputValue, setInputValue] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
+const DataContext: React.Context<DataContextType | null> =
+  createContext<DataContextType | null>(null);
 
-  const [storedData, setStoredData] = useState(() => {
+export const DataProvider = ({ children }: { children: ProviderProps }) => {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+  const [storedData, setStoredData] = useState<Note[]>(() => {
     // Load saved notes from localStorage on first render
     const saved = localStorage.getItem("markdownNotes");
     return saved ? JSON.parse(saved) : [];
@@ -19,12 +26,13 @@ export const DataProvider = ({ children }) => {
     localStorage.setItem("markdownNotes", JSON.stringify(storedData));
   }, [storedData]);
 
-  const textareaRef = useRef(null); // 👈 keep a ref for the textarea
-  const [pageTitle, setPageTitle] = useState("Markdown | Home");
-  const [isToggle, setIsToggle] = useState(false);
+  const textareaRef: React.RefObject<HTMLInputElement | null> =
+    useRef<HTMLInputElement>(null); // 👈 keep a ref for the textarea
+  const [pageTitle, setPageTitle] = useState<string>("Markdown | Home");
+  const [isToggle, setIsToggle] = useState<boolean>(false);
 
-  const handleButton = () => {
-    const newNote = {
+  const handleButton: () => void = () => {
+    const newNote: Note = {
       id: Date.now(),
       title: inputValue.split("\n")[0] || "Untitled",
       content: inputValue.trim(),
@@ -32,28 +40,34 @@ export const DataProvider = ({ children }) => {
       lastModified: dateFormat("mediumDate"),
     };
 
-    setStoredData((prev) => [...prev, newNote]);
+    setStoredData((prev: Note[]) => [...prev, newNote]);
     setInputValue(""); // clear textarea
   };
 
   // handleInputChange
-  const handleInputChange = (e) => setInputValue(e.target.value);
+  const handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => setInputValue(e.target.value);
 
   // 👇 new function for formatting selected text
-  const applyFormatting = (syntaxStart, syntaxEnd = syntaxStart) => {
-    const textarea = textareaRef.current;
+  const applyFormatting: (syntaxStart: string, syntaxEnd?: string) => void = (
+    syntaxStart: string,
+    syntaxEnd = syntaxStart
+  ) => {
+    const textarea: HTMLInputElement | null = textareaRef.current;
     console.log(textarea);
     if (!textarea) return;
 
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
+    const start: number | null = textarea.selectionStart;
+    const end: number | null = textarea.selectionEnd;
 
-    const selectedText = inputValue.substring(start, end);
+    const selectedText: string = inputValue.substring(start, end);
 
-    const before = inputValue.substring(0, start);
-    const after = inputValue.substring(end);
+    const before: string = inputValue.substring(0, start);
+    const after: string = inputValue.substring(end);
 
-    const newValue = before + syntaxStart + selectedText + syntaxEnd + after;
+    const newValue: string =
+      before + syntaxStart + selectedText + syntaxEnd + after;
     setInputValue(newValue);
 
     // restore cursor
@@ -66,9 +80,9 @@ export const DataProvider = ({ children }) => {
 
   // download markdown
 
-  const downloadMarkdown = (content) => {
+  const downloadMarkdown: (content: string) => void = (content: string) => {
     if (content.length > 0) {
-      const fileName = content.split("\n")[0];
+      const fileName: string | undefined = content.split("\n")[0];
       const blob = new Blob([content], {
         type: "text/plain;charset=utf-8",
       });
@@ -77,7 +91,9 @@ export const DataProvider = ({ children }) => {
   };
 
   //Handle success message
-  const handleSaveSuccess = () => {
+  const handleSaveSuccess: (
+    value: React.SetStateAction<boolean>
+  ) => void = () => {
     setShowSuccess(true);
 
     // Hide message after 2.5s

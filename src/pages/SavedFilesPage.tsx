@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import Card from "../components/Card";
-import ButtonWithText from "../components/ButtonWithText";
+import Card from "../components/Card.js";
+import ButtonWithText from "../components/ButtonWithText.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
-import DataContext from "../context/DataContext";
-import SavedFilesEmptyStates from "../components/SavedFilesEmptyStates";
+import DataContext from "../context/DataContext.js";
+import SavedFilesEmptyStates from "../components/SavedFilesEmptyStates.js";
 import { Link } from "react-router-dom";
+import type { Note } from "../components/types/models.js";
 
 function SavedFiles() {
   const { storedData } = useContext(DataContext);
@@ -62,7 +63,7 @@ function SavedFiles() {
           className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-4"
           role="list"
         >
-          {storedData.map((file) => (
+          {storedData.map((file: Note) => (
             <Card
               key={file.id}
               id={file.id}

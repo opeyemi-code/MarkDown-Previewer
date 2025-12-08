@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import HeaderNav from "./HeaderNav";
+import HeaderNav from "./HeaderNav.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import DataContext from "../context/DataContext";
+import DataContext from "../context/DataContext.js";
 
 export default function Header() {
   const { isToggle, setIsToggle } = useContext(DataContext);

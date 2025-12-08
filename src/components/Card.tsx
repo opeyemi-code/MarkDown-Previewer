@@ -1,20 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
-import ButtonWithText from "./ButtonWithText";
+import React, { useContext, type JSX } from "react";
+import ButtonWithText from "./ButtonWithText.js";
 import {
   faDownload,
   faFileLines,
   faFolderOpen,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "./Button";
-import DataContext from "../context/DataContext";
+import Button from "./Button.js";
+import DataContext from "../context/DataContext.js";
+import type { Note, ButtonProps } from "./types/models.js";
 
-export default function Card({ id, title, firstCreated }) {
+export default function Card({
+  id,
+  title,
+  firstCreated,
+}: Pick<Note, "id" | "title" | "firstCreated">): JSX.Element {
   const { storedData, setStoredData, downloadMarkdown } =
     useContext(DataContext);
 
-  const downloadSavedFile = (e) => {
+  const downloadSavedFile: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
     const findFile = storedData.find((file) => file.id === id);
     if (findFile) {
@@ -22,7 +29,9 @@ export default function Card({ id, title, firstCreated }) {
     }
   };
 
-  const deleteFile = (e) => {
+  const deleteFile: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
     const updatedData = storedData.filter((file) => file.id !== id);
     setStoredData(updatedData);

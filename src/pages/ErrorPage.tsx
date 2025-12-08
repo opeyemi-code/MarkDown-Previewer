@@ -1,9 +1,9 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { type JSX } from "react";
 import { Link } from "react-router-dom";
 
-export default function ErrorPage() {
+export default function ErrorPage(): JSX.Element {
   return (
     <main
       className="px-4 lg:px-[5vw] flex justify-center items-center"

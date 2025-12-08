@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import EditorToolbar from "../components/EditorToolbar";
-import Editor from "../components/Editor";
-import LivePreview from "../components/LivePreview";
-import DataContext from "../context/DataContext";
+import EditorToolbar from "../components/EditorToolbar.js";
+import Editor from "../components/Editor.js";
+import LivePreview from "../components/LivePreview.js";
+import DataContext from "../context/DataContext.js";
 
 export default function Home() {
   const { handleSaveSuccess } = useContext(DataContext);
