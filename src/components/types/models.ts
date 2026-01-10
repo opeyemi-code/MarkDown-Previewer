@@ -12,7 +12,7 @@ export type DataContextType = {
   children?: ProviderProps;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  storedData: Note;
+  storedData: Note[];
   setStoredData: React.Dispatch<React.SetStateAction<Note[]>>;
   showSuccess: boolean;
   setShowSuccess: React.Dispatch<React.SetStateAction<boolean>>;

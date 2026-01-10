@@ -6,10 +6,10 @@ import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import DataContext from "../context/DataContext.js";
 import SavedFilesEmptyStates from "../components/SavedFilesEmptyStates.js";
 import { Link } from "react-router-dom";
-import type { Note } from "../components/types/models.js";
+import type { DataContextType, Note } from "../components/types/models.js";
 
 function SavedFiles() {
-  const { storedData } = useContext(DataContext);
+  const { storedData } = useContext(DataContext)!;
 
   return (
     <main
@@ -78,11 +78,11 @@ function SavedFiles() {
 }
 
 export default function SavedFilesPage() {
-  const { storedData } = useContext(DataContext);
+  const { storedData } = useContext(DataContext)!;
 
   return (
     <main
-      className="px-4 py-12 flex flex-col items-center justify-center  lg:px-[5vw] lg:py-15"
+      className="px-4 py-12 flex flex-col items-center justify-center lg:px-[5vw] lg:py-15"
       role="main"
     >
       {storedData.length > 0 ? <SavedFiles /> : <SavedFilesEmptyStates />}

@@ -23,7 +23,7 @@ export default function Card({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     e.preventDefault();
-    const findFile = storedData.find((file) => file.id === id);
+    const findFile: Note = storedData.find((file: Note) => file.id === id);
     if (findFile) {
       downloadMarkdown(findFile.content);
     }
@@ -33,7 +33,9 @@ export default function Card({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     e.preventDefault();
-    const updatedData = storedData.filter((file) => file.id !== id);
+    const updatedData: Note[] = storedData.filter(
+      (file: Note) => file.id !== id
+    );
     setStoredData(updatedData);
     localStorage.setItem("markdownNotes", JSON.stringify(updatedData));
   };
