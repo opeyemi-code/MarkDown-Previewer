@@ -2,10 +2,11 @@ import { faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import DataContext from "../context/DataContext.js";
+import type { DataContextType } from "./types/models.js";
 
 export default function Editor() {
   const { inputValue, handleInputChange, textareaRef, showSuccess } =
-    useContext(DataContext);
+    useContext<DataContextType | null>(DataContext);
 
   // calculate words & lines dynamically
   const lineCount = inputValue ? inputValue.split("\n").length : 0;

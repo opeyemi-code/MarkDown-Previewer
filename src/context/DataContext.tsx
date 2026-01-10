@@ -58,8 +58,8 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
     console.log(textarea);
     if (!textarea) return;
 
-    const start: number | null = textarea.selectionStart;
-    const end: number | null = textarea.selectionEnd;
+    const start: number = textarea.selectionStart;
+    const end: number = textarea.selectionEnd;
 
     const selectedText: string = inputValue.substring(start, end);
 
