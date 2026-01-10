@@ -2,11 +2,7 @@ import { createContext, useState, useEffect, useRef } from "react";
 import FileSaver from "file-saver";
 import dateFormat from "dateformat";
 
-import type {
-  Note,
-  DataContextType,
-  ProviderProps,
-} from "../components/types/models.js";
+import type { Note, DataContextType, ProviderProps } from "../types/models.js";
 
 const DataContext: React.Context<DataContextType | null> =
   createContext<DataContextType | null>(null);
