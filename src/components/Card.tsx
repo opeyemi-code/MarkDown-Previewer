@@ -19,20 +19,14 @@ export default function Card({
   const { storedData, setStoredData, downloadMarkdown } =
     useContext(DataContext);
 
-  const downloadSavedFile: (e: React.ChangeEvent<HTMLInputElement>) => void = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    e.preventDefault();
+  const downloadSavedFile: () => void = () => {
     const findFile: Note = storedData.find((file: Note) => file.id === id);
     if (findFile) {
       downloadMarkdown(findFile.content);
     }
   };
 
-  const deleteFile: (e: React.ChangeEvent<HTMLInputElement>) => void = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    e.preventDefault();
+  const deleteFile: () => void = () => {
     const updatedData: Note[] = storedData.filter(
       (file: Note) => file.id !== id
     );

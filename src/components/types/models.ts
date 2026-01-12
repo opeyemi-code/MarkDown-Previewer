@@ -22,6 +22,8 @@ export type DataContextType = {
   setIsToggle: React.Dispatch<React.SetStateAction<boolean>>;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleButton: () => void;
+  handleSaveButton: (e: MouseEvent) => void;
+  closeModal: (e: MouseEvent) => void;
   applyFormatting: (
     syntaxStart: string,
     syntaxEnd?: string | undefined

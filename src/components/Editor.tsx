@@ -6,7 +6,7 @@ import type { DataContextType } from "./types/models.js";
 
 export default function Editor() {
   const { inputValue, handleInputChange, textareaRef, showSuccess } =
-    useContext<DataContextType | null>(DataContext);
+    useContext(DataContext)!;
 
   // calculate words & lines dynamically
   const lineCount = inputValue ? inputValue.split("\n").length : 0;
@@ -69,8 +69,8 @@ export default function Editor() {
           value={inputValue}
           placeholder="# Welcome to MarkdownPro 
 Start typing your markdown here..."
-          cols="30"
-          rows="16"
+          cols={30}
+          rows={16}
           autoFocus
           aria-label="Markdown input area"
           role="textbox"

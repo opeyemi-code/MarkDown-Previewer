@@ -21,7 +21,7 @@ export default function EditorToolbar({
 }: {
   onSave: () => void;
 }): JSX.Element {
-  const { applyFormatting, handleButton, downloadMarkdown, inputValue } =
+  const { applyFormatting, handleSaveButton, downloadMarkdown, inputValue } =
     useContext(DataContext);
 
   return (
@@ -93,24 +93,22 @@ export default function EditorToolbar({
           className=" text-slate-600 hover:bg-slate-200 p-2 rounded-lg cursor-pointer"
         />
 
-        <ButtonWithText
+        <button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             if (inputValue.trim().length > 0) {
-              handleButton();
+              handleSaveButton(e);
               onSave();
             }
           }}
-          icon={
-            <FontAwesomeIcon
-              icon={faFloppyDisk}
-              className="editor-toolbar__icon"
-            />
-          }
-          text="Save"
-          ariaLabel="Save markdown file"
+          aria-label="Save markdown file"
+          aria-haspopup="true"
+          aria-expanded="false"
           className=" bg-green-600 hover:bg-green-700 text-slate-50 p-2 rounded-md cursor-pointer"
-        />
+        >
+          <FontAwesomeIcon icon={faFloppyDisk} />
+          Save
+        </button>
 
         <ButtonWithText
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

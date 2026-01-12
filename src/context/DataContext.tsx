@@ -2,11 +2,7 @@ import { createContext, useState, useEffect, useRef } from "react";
 import FileSaver from "file-saver";
 import dateFormat from "dateformat";
 
-import type {
-  Note,
-  DataContextType,
-  ProviderProps,
-} from "../components/types/models.js";
+import type { Note, DataContextType, ProviderProps } from "../types/models.js";
 
 const DataContext: React.Context<DataContextType | null> =
   createContext<DataContextType | null>(null);
@@ -14,6 +10,8 @@ const DataContext: React.Context<DataContextType | null> =
 export const DataProvider = ({ children }: { children: ProviderProps }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
+  const dialogRef = useRef(null);
+  const inputRef = useRef(null);
 
   const [storedData, setStoredData] = useState<Note[]>(() => {
     // Load saved notes from localStorage on first render
@@ -31,17 +29,42 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
   const [pageTitle, setPageTitle] = useState<string>("Markdown | Home");
   const [isToggle, setIsToggle] = useState<boolean>(false);
 
-  const handleButton: () => void = () => {
+  // const handleButton: () => void = () => {
+
+  // };
+
+  // Handle save button
+
+  const handleSaveButton: (e: MouseEvent) => void = (e: MouseEvent) => {
+    e.preventDefault();
+    displayModal();
+  };
+
+  const displayModal = () => {
+    dialogRef.current?.showModal();
+  };
+
+  const saveFileTitle: (e: MouseEvent) => void = (e: MouseEvent) => {
+    e.preventDefault();
     const newNote: Note = {
       id: Date.now(),
-      title: inputValue.split("\n")[0] || "Untitled",
+      // title: inputValue.split("\n")[0] || "Untitled",
+      title: inputRef.current?.value.trim() || "Untitled",
       content: inputValue.trim(),
       firstCreated: dateFormat("mediumDate"),
       lastModified: dateFormat("mediumDate"),
     };
 
-    setStoredData((prev: Note[]) => [...prev, newNote]);
+    setStoredData((prev: Note[]) => [newNote, ...prev]);
     setInputValue(""); // clear textarea
+    closeModal(e);
+  };
+
+  // close modal
+  const closeModal: (e: MouseEvent) => void = (e: MouseEvent) => {
+    e.preventDefault();
+    inputRef.current.value = "";
+    dialogRef.current?.close();
   };
 
   // handleInputChange
@@ -114,7 +137,12 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
         isToggle,
         setIsToggle,
         handleInputChange,
-        handleButton,
+        // handleButton,
+        dialogRef,
+        inputRef,
+        handleSaveButton,
+        closeModal,
+        saveFileTitle,
         applyFormatting,
         textareaRef,
         downloadMarkdown,

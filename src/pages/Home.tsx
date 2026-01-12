@@ -3,9 +3,10 @@ import EditorToolbar from "../components/EditorToolbar.js";
 import Editor from "../components/Editor.js";
 import LivePreview from "../components/LivePreview.js";
 import DataContext from "../context/DataContext.js";
+import SaveMarkdownModal from "../components/SaveMarkdownModal.js";
 
 export default function Home() {
-  const { handleSaveSuccess } = useContext(DataContext);
+  const { handleSaveSuccess } = useContext(DataContext)!;
 
   return (
     <main className="main px-4 pt-14 pb-8 lg:pb-0 lg:px-[5vw]" role="main">
@@ -14,6 +15,7 @@ export default function Home() {
         <Editor />
         <LivePreview />
       </section>
+      <SaveMarkdownModal />
     </main>
   );
 }
