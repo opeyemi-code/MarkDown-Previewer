@@ -7,10 +7,9 @@ import DataContext from "../context/DataContext.js";
 export default function Header() {
   const { isToggle, setIsToggle } = useContext(DataContext);
 
-  const toggleNav = (e) => {
+  const toggleNav: (e: MouseEvent) => void = (e) => {
     e.preventDefault();
-    console.log("yes");
-    setIsToggle((prev) => !prev);
+    setIsToggle((prev: string) => !prev);
   };
 
   return (

@@ -8,13 +8,13 @@ export default function HeaderNav() {
 
   const navClass = isToggle ? "block" : "hidden lg:block";
 
-  const handleClick = (page) => {
+  const handleClick = (page: string) => {
     setPageTitle(`MarkdownPro | ${page}`);
     document.title = `MarkdownPro | ${page}`;
     setIsToggle(false);
   };
 
-  const getActiveClass = (page) =>
+  const getActiveClass = (page: string) =>
     pageTitle.includes(page) ? "nav__link--active" : "";
 
   return (
