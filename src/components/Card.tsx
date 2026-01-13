@@ -22,7 +22,7 @@ export default function Card({
   const downloadSavedFile: () => void = () => {
     const findFile: Note = storedData.find((file: Note) => file.id === id);
     if (findFile) {
-      downloadMarkdown(findFile.content);
+      downloadMarkdown(findFile.content, findFile.title);
     }
   };
 

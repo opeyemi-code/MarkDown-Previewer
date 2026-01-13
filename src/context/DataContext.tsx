@@ -103,9 +103,12 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
 
   // download markdown
 
-  const downloadMarkdown: (content: string) => void = (content: string) => {
+  const downloadMarkdown: (content: string, title: string) => void = (
+    content: string,
+    title: string
+  ) => {
     if (content.length > 0) {
-      const fileName: string | undefined = content.split("\n")[0];
+      const fileName: string | undefined = title || "Untitled";
       const blob = new Blob([content], {
         type: "text/plain;charset=utf-8",
       });
