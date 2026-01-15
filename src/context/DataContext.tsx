@@ -10,6 +10,7 @@ const DataContext: React.Context<DataContextType | null> =
 export const DataProvider = ({ children }: { children: ProviderProps }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
+  const [activeFileID, setActiveFileID] = useState(null);
   const dialogRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -23,6 +24,14 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
   useEffect(() => {
     localStorage.setItem("markdownNotes", JSON.stringify(storedData));
   }, [storedData]);
+
+  useEffect(() => {
+    if (activeFileID) {
+      const findFile = storedData.find((file) => file.id === activeFileID);
+      setInputValue(findFile.content);
+      console.log(findFile);
+    }
+  }, [activeFileID]);
 
   const textareaRef: React.RefObject<HTMLInputElement | null> =
     useRef<HTMLInputElement>(null); // 👈 keep a ref for the textarea
@@ -44,20 +53,44 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
     dialogRef.current?.showModal();
   };
 
-  const saveFileTitle: (e: MouseEvent) => void = (e: MouseEvent) => {
+  const saveFile = (e: MouseEvent): void => {
     e.preventDefault();
-    const newNote: Note = {
-      id: Date.now(),
-      // title: inputValue.split("\n")[0] || "Untitled",
-      title: inputRef.current?.value.trim() || "Untitled",
-      content: inputValue.trim(),
-      firstCreated: dateFormat("mediumDate"),
-      lastModified: dateFormat("mediumDate"),
-    };
 
-    setStoredData((prev: Note[]) => [newNote, ...prev]);
-    setInputValue(""); // clear textarea
+    const title = inputRef.current?.value.trim() || "Untitled";
+    const now = dateFormat("mediumDate");
+
+    setStoredData((prev: Note[]) => {
+      // EDIT MODE
+      if (activeFileID) {
+        const updatedNote: Note = {
+          ...prev.find((file) => file.id === activeFileID)!,
+          title,
+          content: inputValue.trim(),
+          lastModified: now,
+        };
+
+        // Remove old version and move updated one to top
+        return [
+          updatedNote,
+          ...prev.filter((note) => note.id !== activeFileID),
+        ];
+      }
+
+      // CREATE MODE
+      const newNote: Note = {
+        id: Date.now(),
+        title,
+        content: inputValue.trim(),
+        firstCreated: now,
+        lastModified: now,
+      };
+
+      return [newNote, ...prev];
+    });
+
+    setInputValue("");
     closeModal(e);
+    localStorage.removeItem("activeFileID");
   };
 
   // close modal
@@ -133,6 +166,8 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
         setInputValue,
         storedData,
         setStoredData,
+        activeFileID,
+        setActiveFileID,
         showSuccess,
         setShowSuccess,
         pageTitle,
@@ -145,7 +180,7 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
         inputRef,
         handleSaveButton,
         closeModal,
-        saveFileTitle,
+        saveFile,
         applyFormatting,
         textareaRef,
         downloadMarkdown,

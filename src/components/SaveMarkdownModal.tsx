@@ -6,8 +6,7 @@ import ButtonWithText from "./ButtonWithText.js";
 import DataContext from "../context/DataContext.js";
 
 export default function SaveMarkdownModal() {
-  const { closeModal, dialogRef, inputRef, saveFileTitle } =
-    useContext(DataContext);
+  const { closeModal, dialogRef, inputRef, saveFile } = useContext(DataContext);
 
   return (
     <dialog
@@ -60,7 +59,7 @@ export default function SaveMarkdownModal() {
               />
             }
             text="Save"
-            onClick={saveFileTitle}
+            onClick={saveFile}
             ariaLabel="Save markdown"
             className="bg-blue-600 py-4 rounded-lg text-white text-sm font-medium tracking-tighter w-full hover:bg-blue-500 hover:cursor-pointer"
           />
