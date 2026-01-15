@@ -69,6 +69,7 @@ function SavedFiles() {
               id={file.id}
               title={file.title}
               firstCreated={file.firstCreated}
+              lastModified={file.lastModified}
             />
           ))}
         </ul>

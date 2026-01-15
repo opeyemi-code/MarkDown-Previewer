@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, type JSX } from "react";
+import { Link } from "react-router-dom";
 import ButtonWithText from "./ButtonWithText.js";
 import {
   faDownload,
@@ -15,9 +16,22 @@ export default function Card({
   id,
   title,
   firstCreated,
-}: Pick<Note, "id" | "title" | "firstCreated">): JSX.Element {
-  const { storedData, setStoredData, downloadMarkdown } =
-    useContext(DataContext);
+  lastModified,
+}: Pick<Note, "id" | "title" | "firstCreated" | "lastModified">): JSX.Element {
+  const {
+    storedData,
+    setStoredData,
+    downloadMarkdown,
+    activeFileID,
+    setActiveFileID,
+  } = useContext(DataContext);
+
+  //Open file functionality
+  const openFile: (id: number) => void = (id: number) => {
+    const findFile: Note = storedData.find((file: Note) => file.id === id);
+    setActiveFileID(() => findFile.id);
+    localStorage.setItem("activeFileID", findFile.id);
+  };
 
   const downloadSavedFile: () => void = () => {
     const findFile: Note = storedData.find((file: Note) => file.id === id);
@@ -53,15 +67,27 @@ export default function Card({
           >
             {title}
           </h3>
-          <p className="text-sm text-gray-400 mt-1">
-            First created:{" "}
-            <time
-              dateTime={firstCreated}
-              aria-label={`Created on ${firstCreated}`}
-            >
-              {firstCreated}
-            </time>
-          </p>
+          {firstCreated === lastModified ? (
+            <p className="text-sm text-gray-400 mt-1">
+              First created:{" "}
+              <time
+                dateTime={firstCreated}
+                aria-label={`Created on ${firstCreated}`}
+              >
+                {firstCreated}
+              </time>
+            </p>
+          ) : (
+            <p className="text-sm text-gray-400 mt-1">
+              last modified:{" "}
+              <time
+                dateTime={lastModified}
+                aria-label={`Created on ${lastModified}`}
+              >
+                {lastModified}
+              </time>
+            </p>
+          )}
         </div>
       </div>
 
@@ -70,12 +96,19 @@ export default function Card({
         role="group"
         aria-label={`Actions for ${title}`}
       >
-        <ButtonWithText
-          icon={<FontAwesomeIcon icon={faFolderOpen} aria-hidden="true" />}
+        <button
           className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-slate-100 flex-1 p-2 rounded-lg"
-          text="Open"
-          onClick={() => console.log(`Opening file: ${title}`)} // placeholder
-        />
+          onClick={() => openFile(id)} // placeholder
+        >
+          <Link to="/">
+            <FontAwesomeIcon
+              icon={faFolderOpen}
+              aria-hidden="true"
+              className="mr-2"
+            />
+            Open
+          </Link>
+        </button>
         <Button
           onClick={downloadSavedFile}
           icon={<FontAwesomeIcon icon={faDownload} aria-hidden="true" />}
