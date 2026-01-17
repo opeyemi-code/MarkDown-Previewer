@@ -45,3 +45,18 @@ html {
   border-radius: 16px;
   margin-top: 30px;
 }
+
+.nav__link--active {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.custom-toast {
+  width: 80%;
+}
+
+@media (min-width: 1024px) {
+  .custom-toast {
+    width: 100%;
+  }
+}

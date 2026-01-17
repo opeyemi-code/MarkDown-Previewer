@@ -33,7 +33,7 @@ export default function LivePreview() {
       <header className="border-b border-slate-500 flex items-center gap-2 p-4 relative">
         <FontAwesomeIcon icon={faEye} aria-hidden="true" />
         <h2>Live Preview</h2>
-        <button className="absolute right-3" onClick={copyText}>
+        <button className="absolute right-3 cursor-pointer" onClick={copyText}>
           <FontAwesomeIcon
             icon={!isCopied ? faClone : faCheck}
             className={`text-slate-500 transition duration-500`}

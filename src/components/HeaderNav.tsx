@@ -31,7 +31,7 @@ export default function HeaderNav() {
             aria-current={pageTitle.includes("Home") ? "page" : undefined}
             className={`nav__link ${getActiveClass(
               "Home"
-            )} text-sm text-slate-700 font-medium lg:text-lg`}
+            )} text-sm text-slate-700 font-medium px-3 py-2 rounded-lg hover:text-blue-600 lg:text-lg`}
             onClick={() => handleClick("Home")}
           >
             Home
@@ -47,7 +47,7 @@ export default function HeaderNav() {
             }
             className={`nav__link ${getActiveClass(
               "Saved Files"
-            )} text-sm text-slate-700 font-medium lg:text-lg`}
+            )} text-sm text-slate-700 font-medium px-3 py-2 rounded-lg hover:text-blue-600 lg:text-lg`}
             onClick={() => handleClick("Saved Files")}
           >
             Saved Files
@@ -61,7 +61,7 @@ export default function HeaderNav() {
             aria-current={pageTitle.includes("About") ? "page" : undefined}
             className={`nav__link ${getActiveClass(
               "About"
-            )} text-sm text-slate-700 font-medium lg:text-lg`}
+            )} text-sm text-slate-700 font-medium px-3 py-2 rounded-lg hover:text-blue-600 lg:text-lg`}
             onClick={() => handleClick("About")}
           >
             About

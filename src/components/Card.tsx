@@ -100,7 +100,7 @@ export default function Card({
           className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-slate-100 flex-1 p-2 rounded-lg"
           onClick={() => openFile(id)} // placeholder
         >
-          <Link to="/">
+          <Link to="/" className="block">
             <FontAwesomeIcon
               icon={faFolderOpen}
               aria-hidden="true"

@@ -10,6 +10,7 @@ import About from "./pages/About.js";
 import Footer from "./components/Footer";
 import ErrorPage from "./pages/ErrorPage.js";
 import { DataProvider } from "./context/DataContext.js";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              toastClassName="custom-toast top-[60px] md:top-[100px]"
+            />
             <Footer />
           </div>
         </DataProvider>

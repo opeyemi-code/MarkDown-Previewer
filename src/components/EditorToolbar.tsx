@@ -14,15 +14,46 @@ import {
 import Button from "./Button.js";
 import ButtonWithText from "./ButtonWithText.js";
 import DataContext from "../context/DataContext.js";
-import type { DataContextType } from "./types/models.js";
+import { toast } from "react-toastify";
 
 export default function EditorToolbar({
   onSave,
 }: {
   onSave: () => void;
 }): JSX.Element {
-  const { applyFormatting, handleSaveButton, downloadMarkdown, inputValue } =
-    useContext(DataContext);
+  const {
+    applyFormatting,
+    handleSaveButton,
+    downloadMarkdown,
+    inputValue,
+    setInputValue,
+  } = useContext(DataContext);
+
+  //Triger upload button
+  const uploadFile: () => void = () => {
+    const inputfileField = document.getElementById("input-file");
+    inputfileField?.click();
+  };
+
+  //Handle file Upload
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.name.endsWith(".md")) {
+      toast.error("Only Markdown (.md) files are supported");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setInputValue(reader.result as string);
+      toast.success("Markdown file uploaded successfully");
+    };
+
+    reader.readAsText(file);
+  };
 
   return (
     <section
@@ -84,14 +115,34 @@ export default function EditorToolbar({
       <div className="w-px h-6 bg-gray-200 hidden lg:block"></div>
       {/* --- Action Buttons --- */}
       <div className="flex gap-3" role="group" aria-label="File actions">
-        <ButtonWithText
-          icon={
-            <FontAwesomeIcon icon={faUpload} className="editor-toolbar__icon" />
-          }
-          text="Upload"
-          ariaLabel="Upload markdown file"
-          className=" text-slate-600 hover:bg-slate-200 p-2 rounded-lg cursor-pointer"
-        />
+        <div>
+          <ButtonWithText
+            icon={
+              <FontAwesomeIcon
+                icon={faUpload}
+                className="editor-toolbar__icon"
+              />
+            }
+            text="Upload"
+            ariaLabel="Upload markdown file"
+            className=" text-slate-600 hover:bg-slate-200 p-2 rounded-lg cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault;
+              uploadFile();
+            }}
+          />
+          <label htmlFor="input-file">
+            <input
+              type="file"
+              id="input-file"
+              className="hidden"
+              accept=".md, .txt"
+              onChange={(e) => {
+                handleFileInput(e);
+              }}
+            />
+          </label>
+        </div>
 
         <button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

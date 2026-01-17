@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useRef } from "react";
 import FileSaver from "file-saver";
 import dateFormat from "dateformat";
+import { toast } from "react-toastify";
 
 import type { Note, DataContextType, ProviderProps } from "../types/models.js";
 
@@ -90,6 +91,7 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
 
     setInputValue("");
     closeModal(e);
+    toast.success("Markdown file saved successfully");
     localStorage.removeItem("activeFileID");
   };
 
