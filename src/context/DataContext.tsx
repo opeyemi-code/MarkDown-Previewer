@@ -12,8 +12,8 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const [activeFileID, setActiveFileID] = useState(null);
-  const dialogRef = useRef(null);
-  const inputRef = useRef(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [storedData, setStoredData] = useState<Note[]>(() => {
     // Load saved notes from localStorage on first render
@@ -30,13 +30,12 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
     if (activeFileID) {
       const findFile = storedData.find((file) => file.id === activeFileID);
       setInputValue(findFile.content);
-      console.log(findFile);
     }
   }, [activeFileID]);
 
   const textareaRef: React.RefObject<HTMLInputElement | null> =
     useRef<HTMLInputElement>(null); // 👈 keep a ref for the textarea
-  const [pageTitle, setPageTitle] = useState<string>("Markdown | Home");
+  const [pageTitle, setPageTitle] = useState<string | null>("Markdown | Home");
   const [isToggle, setIsToggle] = useState<boolean>(false);
 
   // const handleButton: () => void = () => {
@@ -98,34 +97,34 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
   // close modal
   const closeModal: (e: MouseEvent) => void = (e: MouseEvent) => {
     e.preventDefault();
-    inputRef.current.value = "";
+    inputRef.current!.value = "";
     dialogRef.current?.close();
   };
 
   // handleInputChange
   const handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>,
   ) => setInputValue(e.target.value);
 
   // 👇 new function for formatting selected text
   const applyFormatting: (syntaxStart: string, syntaxEnd?: string) => void = (
     syntaxStart: string,
-    syntaxEnd = syntaxStart
+    syntaxEnd = syntaxStart,
   ) => {
-    const textarea: HTMLInputElement | null = textareaRef.current;
-    console.log(textarea);
+    const textarea = textareaRef.current;
     if (!textarea) return;
 
-    const start: number = textarea.selectionStart;
-    const end: number = textarea.selectionEnd;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
 
-    const selectedText: string = inputValue.substring(start, end);
+    if (start === null || end === null) return;
 
-    const before: string = inputValue.substring(0, start);
-    const after: string = inputValue.substring(end);
+    const selectedText = inputValue.substring(start, end);
+    const before = inputValue.substring(0, start);
+    const after = inputValue.substring(end);
 
-    const newValue: string =
-      before + syntaxStart + selectedText + syntaxEnd + after;
+    const newValue = before + syntaxStart + selectedText + syntaxEnd + after;
+
     setInputValue(newValue);
 
     // restore cursor
@@ -140,7 +139,7 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
 
   const downloadMarkdown: (content: string, title: string) => void = (
     content: string,
-    title: string
+    title: string,
   ) => {
     if (content.length > 0) {
       const fileName: string | undefined = title || "Untitled";
@@ -153,7 +152,7 @@ export const DataProvider = ({ children }: { children: ProviderProps }) => {
 
   //Handle success message
   const handleSaveSuccess: (
-    value: React.SetStateAction<boolean>
+    value: React.SetStateAction<boolean>,
   ) => void = () => {
     setShowSuccess(true);
 

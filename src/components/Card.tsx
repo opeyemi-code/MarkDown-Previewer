@@ -42,7 +42,7 @@ export default function Card({
 
   const deleteFile: () => void = () => {
     const updatedData: Note[] = storedData.filter(
-      (file: Note) => file.id !== id
+      (file: Note) => file.id !== id,
     );
     setStoredData(updatedData);
     localStorage.setItem("markdownNotes", JSON.stringify(updatedData));

@@ -7,7 +7,7 @@ import Home from "./pages/Home.js";
 import SavedFilesPage from "./pages/SavedFilesPage.js";
 import Header from "./components/Header.js";
 import About from "./pages/About.js";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer.js";
 import ErrorPage from "./pages/ErrorPage.js";
 import { DataProvider } from "./context/DataContext.js";
 import { ToastContainer } from "react-toastify";
@@ -28,7 +28,7 @@ function App() {
             <ToastContainer
               position="top-right"
               autoClose={3000}
-              toastClassName="custom-toast top-[60px] md:top-[100px]"
+              toastClassName="custom-toast top-[80px] md:top-[100px]"
             />
             <Footer />
           </div>

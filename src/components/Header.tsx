@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, type MouseEventHandler } from "react";
 import HeaderNav from "./HeaderNav.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +7,9 @@ import DataContext from "../context/DataContext.js";
 export default function Header() {
   const { isToggle, setIsToggle } = useContext(DataContext);
 
-  const toggleNav: (e: MouseEvent) => void = (e) => {
+  const toggleNav: MouseEventHandler = (e) => {
     e.preventDefault();
-    setIsToggle((prev: string) => !prev);
+    setIsToggle((prev: boolean) => !prev);
   };
 
   return (
@@ -40,17 +40,6 @@ export default function Header() {
       >
         <FontAwesomeIcon icon={faBars} className="hamburger-menu" />
       </button>
-
-      {/* Responsive Navigation */}
-      {/* <nav
-        id="main-navigation"
-        role="navigation"
-        aria-label="Primary"
-        // className={isToggle ? "nav" : "nav nav-lg-visible"}
-        className="hidden lg:block"
-      >
-        <HeaderNav />
-      </nav> */}
       <HeaderNav />
     </header>
   );
